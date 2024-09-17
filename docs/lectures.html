@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.529">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Computer Aided Archaeology - Lectures</title>
+<title>GIS in Archaeology - Lectures</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,8 +66,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 </head>
@@ -80,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Computer Aided Archaeology</span>
+    <span class="navbar-title">GIS in Archaeology</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -151,149 +149,608 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-striped table-sm small" data-quarto-postprocess="true">
+<div id="uekoooakgl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uekoooakgl table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uekoooakgl thead, #uekoooakgl tbody, #uekoooakgl tfoot, #uekoooakgl tr, #uekoooakgl td, #uekoooakgl th {
+  border-style: none;
+}
+
+#uekoooakgl p {
+  margin: 0;
+  padding: 0;
+}
+
+#uekoooakgl .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uekoooakgl .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uekoooakgl .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uekoooakgl .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uekoooakgl .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uekoooakgl .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uekoooakgl .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uekoooakgl .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uekoooakgl .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uekoooakgl .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uekoooakgl .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uekoooakgl .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uekoooakgl .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uekoooakgl .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uekoooakgl .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uekoooakgl .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uekoooakgl .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uekoooakgl .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uekoooakgl .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uekoooakgl .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uekoooakgl .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uekoooakgl .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uekoooakgl .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uekoooakgl .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uekoooakgl .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uekoooakgl .gt_left {
+  text-align: left;
+}
+
+#uekoooakgl .gt_center {
+  text-align: center;
+}
+
+#uekoooakgl .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uekoooakgl .gt_font_normal {
+  font-weight: normal;
+}
+
+#uekoooakgl .gt_font_bold {
+  font-weight: bold;
+}
+
+#uekoooakgl .gt_font_italic {
+  font-style: italic;
+}
+
+#uekoooakgl .gt_super {
+  font-size: 65%;
+}
+
+#uekoooakgl .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uekoooakgl .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uekoooakgl .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uekoooakgl .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uekoooakgl .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uekoooakgl .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uekoooakgl .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uekoooakgl .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uekoooakgl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
 <thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">date</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">title</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">topics</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">slides</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">slides_pdf</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">video</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">reading</th>
+<tr class="header gt_col_headings">
+<th id="date" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">date</th>
+<th id="title" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">title</th>
+<th id="topics" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">topics</th>
+<th id="slides" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">slides</th>
+<th id="slides_pdf" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">slides_pdf</th>
+<th id="video" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">video</th>
+<th id="reading" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">reading</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="gt_table_body">
 <tr class="odd">
-<td style="text-align: left; width: 8em;">18.09.24</td>
-<td style="text-align: left; width: 20em;">Introduction</td>
-<td style="text-align: left;">Overview , Types of Maps , Spatial Data , GIS Basics , First Simple Map</td>
-<td style="text-align: left;">[gis_in_archaeology_01.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_01.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">18.09.24</td>
+<td class="gt_row gt_left" headers="title">Introduction</td>
+<td class="gt_row gt_center" headers="topics">Overview, Types of Maps, Spatial Data, GIS Basics, First Simple Map</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_01.html">gis_in_archaeology_01</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_01.pdf">gis_in_archaeology_01</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; width: 8em;">25.09.24</td>
-<td style="text-align: left; width: 20em;">*no class*</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">[](lectures/.html)</td>
-<td style="text-align: left;">[](lectures/.pdf)</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">[](lectures/.html)</td>
+<td class="gt_row gt_right" headers="date">25.09.24</td>
+<td class="gt_row gt_left" headers="title">*no class*</td>
+<td class="gt_row gt_center" headers="topics"></td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/ .html"></a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/ .pdf"></a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; width: 8em;">02.10.24</td>
-<td style="text-align: left; width: 20em;">Working with QGIS</td>
-<td style="text-align: left;">Layer Control , Data Formats , Filter and Query, Zoom and Pan , Export , Projections</td>
-<td style="text-align: left;">[gis_in_archaeology_02.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_02.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">02.10.24</td>
+<td class="gt_row gt_left" headers="title">Working with QGIS</td>
+<td class="gt_row gt_center" headers="topics">Layer Control, Data Formats, Filter and Query, Zoom and Pan, Export, Projections</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_02.html">gis_in_archaeology_02</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_02.pdf">gis_in_archaeology_02</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; width: 8em;">09.10.24</td>
-<td style="text-align: left; width: 20em;">Making Maps</td>
-<td style="text-align: left;">Selection , Styling , Basemaps , Print Composer</td>
-<td style="text-align: left;">[gis_in_archaeology_03.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_03.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">09.10.24</td>
+<td class="gt_row gt_left" headers="title">Making Maps</td>
+<td class="gt_row gt_center" headers="topics">Selection, Styling, Basemaps, Print Composer</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_03.html">gis_in_archaeology_03</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_03.pdf">gis_in_archaeology_03</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; width: 8em;">16.10.24</td>
-<td style="text-align: left; width: 20em;">Georeferencing</td>
-<td style="text-align: left;">Georeferencing, Digitising</td>
-<td style="text-align: left;">[gis_in_archaeology_04.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_04.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">16.10.24</td>
+<td class="gt_row gt_left" headers="title">Georeferencing</td>
+<td class="gt_row gt_center" headers="topics">Georeferencing, Digitising</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_04.html">gis_in_archaeology_04</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_04.pdf">gis_in_archaeology_04</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; width: 8em;">23.10.24</td>
-<td style="text-align: left; width: 20em;">Handling Spatial Data</td>
-<td style="text-align: left;">Manipulation of Vector Data, Extraction from Raster , Thematic Map</td>
-<td style="text-align: left;">[gis_in_archaeology_05.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_05.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">23.10.24</td>
+<td class="gt_row gt_left" headers="title">Handling Spatial Data</td>
+<td class="gt_row gt_center" headers="topics">Manipulation of Vector Data, Extraction from Raster, Thematic Map</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_05.html">gis_in_archaeology_05</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_05.pdf">gis_in_archaeology_05</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; width: 8em;">30.10.24</td>
-<td style="text-align: left; width: 20em;">Densities</td>
-<td style="text-align: left;">more Thematic Maps , Heatmap , Point Pattern Analysis</td>
-<td style="text-align: left;">[gis_in_archaeology_06.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_06.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">30.10.24</td>
+<td class="gt_row gt_left" headers="title">Densities</td>
+<td class="gt_row gt_center" headers="topics">more Thematic Maps, Heatmap, Point Pattern Analysis</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_06.html">gis_in_archaeology_06</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_06.pdf">gis_in_archaeology_06</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; width: 8em;">06.11.24</td>
-<td style="text-align: left; width: 20em;">Interpolation</td>
-<td style="text-align: left;">Interpolation Basics , Gridding , Thiessen Polygons , Nearest Neighbor Interpolation, TIN , IDW , Contours</td>
-<td style="text-align: left;">[gis_in_archaeology_07.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_07.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">06.11.24</td>
+<td class="gt_row gt_left" headers="title">Interpolation</td>
+<td class="gt_row gt_center" headers="topics">Interpolation Basics, Gridding, Thiessen Polygons, Nearest Neighbor Interpolation, TIN, IDW, Contours</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_07.html">gis_in_archaeology_07</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_07.pdf">gis_in_archaeology_07</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; width: 8em;">13.11.24</td>
-<td style="text-align: left; width: 20em;">*no class*</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">[](lectures/.html)</td>
-<td style="text-align: left;">[](lectures/.pdf)</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">[](lectures/.html)</td>
+<td class="gt_row gt_right" headers="date">13.11.24</td>
+<td class="gt_row gt_left" headers="title">*no class*</td>
+<td class="gt_row gt_center" headers="topics"></td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/ .html"></a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/ .pdf"></a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; width: 8em;">20.11.24</td>
-<td style="text-align: left; width: 20em;">Making nicer Maps</td>
-<td style="text-align: left;">Basemap advanced , Basemap from Scratch, Hillshading , Overview Map</td>
-<td style="text-align: left;">[gis_in_archaeology_08.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_08.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">20.11.24</td>
+<td class="gt_row gt_left" headers="title">Making nicer Maps</td>
+<td class="gt_row gt_center" headers="topics">Basemap advanced, Basemap from Scratch, Hillshading, Overview Map</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_08.html">gis_in_archaeology_08</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_08.pdf">gis_in_archaeology_08</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; width: 8em;">27.11.24</td>
-<td style="text-align: left; width: 20em;">Terrain Data</td>
-<td style="text-align: left;">DEM Basics , Raster Manipulation, Slope , Aspect , TPI , Landforms , Terrain Analysis</td>
-<td style="text-align: left;">[gis_in_archaeology_09.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_09.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">27.11.24</td>
+<td class="gt_row gt_left" headers="title">Terrain Data</td>
+<td class="gt_row gt_center" headers="topics">DEM Basics, Raster Manipulation, Slope, Aspect, TPI, Landforms, Terrain Analysis</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_09.html">gis_in_archaeology_09</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_09.pdf">gis_in_archaeology_09</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; width: 8em;">04.12.24</td>
-<td style="text-align: left; width: 20em;">Least Cost Path Analysis</td>
-<td style="text-align: left;">LCP Basics , Cost functions , Dijkstra , Iso/anistropic , Walking Distance</td>
-<td style="text-align: left;">[gis_in_archaeology_10.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_10.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">04.12.24</td>
+<td class="gt_row gt_left" headers="title">Least Cost Path Analysis</td>
+<td class="gt_row gt_center" headers="topics">LCP Basics, Cost functions, Dijkstra, Iso/anistropic, Walking Distance</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_10.html">gis_in_archaeology_10</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_10.pdf">gis_in_archaeology_10</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left; width: 8em;">11.12.24</td>
-<td style="text-align: left; width: 20em;">Site Catchment Analysis</td>
-<td style="text-align: left;">Least Cost Corridors, SCA Background , Data Extraction</td>
-<td style="text-align: left;">[gis_in_archaeology_11.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_11.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">11.12.24</td>
+<td class="gt_row gt_left" headers="title">Site Catchment Analysis</td>
+<td class="gt_row gt_center" headers="topics">Least Cost Corridors, SCA Background, Data Extraction</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_11.html">gis_in_archaeology_11</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_11.pdf">gis_in_archaeology_11</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 <tr class="even">
-<td style="text-align: left; width: 8em;">18.12.24</td>
-<td style="text-align: left; width: 20em;">Visibility Analysis</td>
-<td style="text-align: left;">Visibility Analysis Basics, Viewshed , Intervisibility , Cumulative Viewshed , Intervisibility Network , Total Viewshed</td>
-<td style="text-align: left;">[gis_in_archaeology_12.pdf</td>
-<td style="text-align: left;">(lectures/gis_in_archaeolo</td>
-<td style="text-align: left;">y_12.p</td>
-<td style="text-align: left;">f.html)|[gis_in_arc</td>
+<td class="gt_row gt_right" headers="date">18.12.24</td>
+<td class="gt_row gt_left" headers="title">Visibility Analysis</td>
+<td class="gt_row gt_center" headers="topics">Visibility Analysis Basics, Viewshed, Intervisibility, Cumulative Viewshed, Intervisibility Network, Total Viewshed</td>
+<td class="gt_row gt_left" headers="slides"><p><a href="lectures/gis_in_archaeology_12.html">gis_in_archaeology_12</a></p></td>
+<td class="gt_row gt_left" headers="slides_pdf"><p><a href="lectures/gis_in_archaeology_12.pdf">gis_in_archaeology_12</a></p></td>
+<td class="gt_row gt_right" headers="video"></td>
+<td class="gt_row gt_left" headers="reading"><p><a href="lectures/.html"></a></p></td>
 </tr>
 </tbody>
 </table>
 
-
+</div>
 </div>
 </div>
 
