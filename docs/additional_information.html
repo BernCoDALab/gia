@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Computer Aided Archaeology -</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Computer Aided Archaeology</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Overview</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./additional_information.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Additional Information</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./schedule.html" rel="" target="">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./lectures.html" rel="" target="">
+ <span class="menu-text">Lectures</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./comp_labs.html" rel="" target="">
+ <span class="menu-text">Computer Labs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./homework.html" rel="" target="">
+ <span class="menu-text">Homework</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-projects" id="toc-course-projects" class="nav-link active" data-scroll-target="#course-projects">Course projects</a></li>
+  <li><a href="#classroom-conduct" id="toc-classroom-conduct" class="nav-link" data-scroll-target="#classroom-conduct">Classroom conduct</a></li>
+  <li><a href="#access-accommodations" id="toc-access-accommodations" class="nav-link" data-scroll-target="#access-accommodations">Access &amp; accommodations</a>
+  <ul class="collapse">
+  <li><a href="#disabilities" id="toc-disabilities" class="nav-link" data-scroll-target="#disabilities">Disabilities</a></li>
+  <li><a href="#religious-observances" id="toc-religious-observances" class="nav-link" data-scroll-target="#religious-observances">Religious observances</a></li>
+  </ul></li>
+  <li><a href="#technology" id="toc-technology" class="nav-link" data-scroll-target="#technology">Technology</a></li>
+  <li><a href="#teaching-methodology" id="toc-teaching-methodology" class="nav-link" data-scroll-target="#teaching-methodology">Teaching methodology</a></li>
+  <li><a href="#communication" id="toc-communication" class="nav-link" data-scroll-target="#communication">Communication</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a>
+  <ul class="collapse">
+  <li><a href="#labwork-40" id="toc-labwork-40" class="nav-link" data-scroll-target="#labwork-40">Labwork (40%)</a></li>
+  <li><a href="#individual-project-30" id="toc-individual-project-30" class="nav-link" data-scroll-target="#individual-project-30">Individual project (30%)</a></li>
+  <li><a href="#peer-reviews-20" id="toc-peer-reviews-20" class="nav-link" data-scroll-target="#peer-reviews-20">Peer reviews (20%)</a></li>
+  <li><a href="#participation-10" id="toc-participation-10" class="nav-link" data-scroll-target="#participation-10">Participation (10%)</a></li>
+  </ul></li>
+  <li><a href="#academic-integrity" id="toc-academic-integrity" class="nav-link" data-scroll-target="#academic-integrity">Academic integrity</a></li>
+  <li><a href="#evaluation-by-you" id="toc-evaluation-by-you" class="nav-link" data-scroll-target="#evaluation-by-you">Evaluation by you</a></li>
+  <li><a href="#mental-health" id="toc-mental-health" class="nav-link" data-scroll-target="#mental-health">Mental health</a></li>
+  <li><a href="#endnotes" id="toc-endnotes" class="nav-link" data-scroll-target="#endnotes">Endnotes</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="course-projects" class="level1">
+<h1>Course projects</h1>
+<p>Die Durchführung und Bewertung dieses Kurses beruht darauf, dass Sie im Laufe des Semesters ein Projekt bearbeiten. Bevorzugt ist dies ein Projekt über eine Fundstelle, die Sie selbst wählen, da Sie dies dann im Rahmen anderer Veranstaltungen nutzen können. Sollten Sie kein entsprechendes Projekt bzw. keine entsprechende Fundstelle wissen, können Sie gerne eines der folgenden bronze- und eisenzeitlichen Gräberfelder bearbeiten:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">site</th>
+<th style="text-align: left;">literature</th>
+<th style="text-align: left;">link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Birmensdorf-Rameren</td>
+<td style="text-align: left;">Mäder, Andreas, Die mittelbronzezeitlichen Gräber von Birmensdorf-Rameren. Zürcher Archäologie, Heft 24. 2008</td>
+<td style="text-align: left;"><a href="https://swisscovery.slsp.ch/permalink/41SLSP_NETWORK/1ufb5t2/alma991070558649705501">Link</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Chables</td>
+<td style="text-align: left;">Leyla Duvanel, Henri Vigneau, Michel Guélat et Michel Mauvilly, La nécropole de l’âge du Bronze de Châbles/Les Biolleyres 1. Fribourg 2018</td>
+<td style="text-align: left;"><a href="https://doc.rero.ch/record/306538/files/CHA-BI1_Monographie.pdf">Link</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Singen</td>
+<td style="text-align: left;">Rüdiger Krause: Die endneolithischen und frühbronzezeitlichen Grabfunde auf der Nordstadtterrasse von Singen am Hohentwiel (= Forschungen und Berichte zur Vor- und Frühgeschichte in Baden-Württemberg. Bd. 32 = Die Grabfunde von Singen. Bd. 1)</td>
+<td style="text-align: left;"><a href="https://swisscovery.slsp.ch/permalink/41SLSP_NETWORK/1ufb5t2/alma991131257489705501">Link</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Murten/Löwenberg</td>
+<td style="text-align: left;">Archäologie und Autobahn A1 : 25 Jahre Ausgrabungen im Murtenbiet</td>
+<td style="text-align: left;"><a href="https://doc.rero.ch/record/256263/files/06_archaeologie_autobahn_A1_2008_katalog_austellung.pdf">Link</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prag-Miškovice</td>
+<td style="text-align: left;">Ernée , Michal. Prag-Miskovice Archäologische und naturwissenschaftliche Untersuchungen zu Grabbau, Bestattungssitten und Inventaren einer frühbronzezeitlichen Nekropole Römisch-Germanische Forschungen Band 72 2016</td>
+<td style="text-align: left;"><a href="https://www.academia.edu/23371514/Prag_Mi%C5%A1kovice_Arch%C3%A4ologische_und_naturwissenschaftliche_Untersuchungen_zu_Grabbau_Bestattungssitten_und_Inventaren_einer_fr%C3%BChbronzezeitlichen_Nekropole">Link</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Spiez, Einigen, Holleeweg 3</td>
+<td style="text-align: left;">Gubler, Regula, Spiez-Einigen, Holleeweg 3. Gräber am Übergang zwischen Früh- und Mittelbronzezeit . Archäologie Bern/Archéologie bernoise – 2010, 147</td>
+<td style="text-align: left;"><a href="https://www.e-periodica.ch/digbib/view?pid=akb-002%3A2010%3A0%3A%3A152">Link</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="classroom-conduct" class="level1">
+<h1>Classroom conduct</h1>
+<p>We are dedicated to providing a welcoming and supportive learning environment for all students, regardless of their background, identity, physical appearance, or manner of communication. Any form of language or behavior used to exclude, intimidate, or cause discomfort will not be tolerated. This applies to all course participants (instructor, students, guests). In order to foster a positive and professional learning environment, we ask the following:</p>
+<ul>
+<li><p>Please let us know if you have a name or set of preferred pronouns that you would like us to use</p></li>
+<li><p>Please let us know if <em>anyone</em> in class says something that makes you feel uncomfortable<sup>[<a href="#endnotes">1</a>]</sup></p></li>
+</ul>
+<p>In addition, we encourage the following kinds of behaviors:</p>
+<ul>
+<li><p>Use welcoming and inclusive language</p></li>
+<li><p>Show courtesy and respect towards others</p></li>
+<li><p>Acknowledge different viewpoints and experiences</p></li>
+<li><p>Gracefully accept constructive criticism</p></li>
+</ul>
+<p>Although we strive to create and use inclusive materials in this course, there may be overt or covert biases in the course material due to the lens with which it was written. Your suggestions about how to improve the value of diversity in this course are encouraged and appreciated.</p>
+<p><strong>Please note</strong>: The University of Bern is committed to a non-discriminatory environment. This applies in particular to discrimination on the basis of gender (sexism) and sexual assaults (sexual harassment): we are all entitled to protection of our personal integrity at work and during our studies and to the respect of our limits. The University of Bern is also legally obliged to protect its members from sexual harassment. In particular, superiors are also responsible for looking out and reacting.</p>
+<p>If you believe you have been a victim of any form of discrimination, you have the right to <a href="https://www.unibe.ch/studies/advisory_services/discrimination/index_eng.html">report it to the University</a>.</p>
+<p><br></p>
+</section>
+<section id="access-accommodations" class="level1">
+<h1>Access &amp; accommodations</h1>
+<p>All students deserve access to the full range of learning experiences, and we are committed to creating inclusive and accessible learning environments consistent with federal and state laws. If you feel like your performance in class is being impacted by your experiences outside of class, please talk with us.</p>
+<section id="disabilities" class="level3">
+<h3 class="anchored" data-anchor-id="disabilities">Disabilities</h3>
+<p>If you have already established accommodations with Disability Resources for Students (DRS), please communicate your approved accommodations to us at your earliest convenience so we can discuss your needs in this course. If you have not yet established services through DRS, but have a temporary health condition or permanent disability that requires accommodations (<em>e.g.</em>, mental health, learning, vision, hearing, physical impacts), you are welcome to contact DRS at 206-543-8924 or via <a href="mailto:uwdrs@uw.edu">email</a> or their <a href="https://depts.washington.edu/uwdrs/">website</a>. DRS offers resources and coordinates reasonable accommodations for students with disabilities and/or temporary health conditions. Reasonable accommodations are established through an interactive process between you, your instructor(s) and DRS.</p>
+</section>
+<section id="religious-observances" class="level3">
+<h3 class="anchored" data-anchor-id="religious-observances">Religious observances</h3>
+<p>Students who expect to miss class or assignments as a consequence of their religious observance will be provided with a reasonable accommodation to fulfill their academic responsibilities. Absence from class for religious reasons does not relieve students from responsibility for the course work required during the period of absence. It is the responsibility of the student to provide the instructor with advance notice of the dates of religious holidays on which they will be absent. Students who are absent will be offered an opportunity to make up the work, without penalty, within a reasonable time, as long as the student has made prior arrangements.</p>
+</section>
+</section>
+<section id="technology" class="level1">
+<h1>Technology</h1>
+<p>This course will revolve around hands-on computing exercises that demonstrate the topics of interest. Therefore, students are strongly recommended to bring their own laptop to class, although students are certainly free to work with one another. <strong>For students without access to a personal laptop</strong>: Please let us know in time, and we will try to find a solution.</p>
+<p>All of the software we will be using is free and platform independent, meaning students may use macOS, Linux, or Windows operating systems. In addition to a web browser, we will be using the free Office Suite <a href="https://www.libreoffice.org"><strong>LibreOffice</strong></a>, the literature database <a href="https://www.zotero.org">Zotero</a>, the GIS software <a href="https://www.qgis.org"><strong>QGIS</strong></a>. The instructor will be available to help students troubleshoot any software installation problems.</p>
+</section>
+<section id="teaching-methodology" class="level1">
+<h1>Teaching methodology</h1>
+<p>This course will introduce new material primarily through prepared slides, videos and the text book. What is learned is then applied to a common project under supervision in the lab time. Students will be expected to work both individually and collaboratively (to the extent possible given the current conditions) during this time and also in general; course content and evaluation will emphasize the communication of ideas and the ability to think critically more so than a specific pathway or method. Other areas of this website provide an overview of the topics to be covered, including links to weekly reading assignments, lecture materials, computer labs, and homework assignments.</p>
+</section>
+<section id="communication" class="level1">
+<h1>Communication</h1>
+<p>This course will involve a <em>lot</em> of communication between and among students and the instructor. Short questions should be addressed to us via email; we will try my best to respond to your message within 24 hours. Under more normal circumstances, detailed questions would be addressed to us in person–either after class or during a scheduled meeting. In this case, however, we will schedule one-on-one or group video calls as needed.</p>
+<p>In addition to email and video, we will use a <a href="https://slack.com">slack</a> workspace (<a href="https://caa2023.slack.com">caa2023.slack.com</a>)to ask questions and assist others.</p>
+</section>
+<section id="evaluation" class="level1">
+<h1>Evaluation</h1>
+<p>Students will be evaluated on their knowledge of course content and their ability to communicate their understanding of the material via individual homework assignments (30%), a final project (40%), peer reviews (20%), and class participation (10%). There will be ? homework assignments, each of which will count toward ?% of the final grade. Please note, <strong>all assignments must be turned in to achieve a passing grade</strong>.</p>
+<section id="labwork-40" class="level3">
+<h3 class="anchored" data-anchor-id="labwork-40">Labwork (40%)</h3>
+<p>The results from the labwork (each Wednesday) is considered as “homework”, and its submission is due by 17:59 on the following Tuesday. It will consist of some small tasks and practical approaches based on topics covered. There will be 8 assignments worth 5% each. Your learning in the class will be greatly enhanced by doing the “homework” which consist of applying the material you learn in each lecture to a data set.</p>
+</section>
+<section id="individual-project-30" class="level3">
+<h3 class="anchored" data-anchor-id="individual-project-30">Individual project (30%)</h3>
+<p>Each student will have to write a complete, publishable (&lt;10 page) paper that may, or may not, serve as a component of their thesis/dissertation. Given that some students might not have their own data, students may also use data from the instructors or public datasets.</p>
+</section>
+<section id="peer-reviews-20" class="level3">
+<h3 class="anchored" data-anchor-id="peer-reviews-20">Peer reviews (20%)</h3>
+<p>Each student will have to provide 2 anonymous peer-reviews of their colleagues’ papers (10% each) during the winter break.</p>
+</section>
+<section id="participation-10" class="level3">
+<h3 class="anchored" data-anchor-id="participation-10">Participation (10%)</h3>
+<p>We expect a certain amount of engagement from each student, which includes independently preparing the course content and attending and participating in the computer labs.</p>
+<p>Students should discuss any potential schedule conflicts with the instructor during the first week of class.</p>
+<p><br></p>
+</section>
+</section>
+<section id="academic-integrity" class="level1">
+<h1>Academic integrity</h1>
+<p>Faculty and students at the University of Bern are expected to maintain the highest standards of academic conduct, professional honesty, and personal integrity. Plagiarism, cheating, and other academic misconduct are serious violations of the <a href="https://swiss-academies.ch/en/themen/wissenschaftskultur/wissenschaftliche-integritat-1/">Scientific Code of Conduct</a>. Students who have been guilty of a violation will receive zero points for the assignment in question.</p>
+</section>
+<section id="evaluation-by-you" class="level1">
+<h1>Evaluation by you</h1>
+<p>With the help of standardised student feedback, courses at the University of Bern are continuously reviewed and further developed. All teaching staff and all courses are regularly evaluated.</p>
+<p>In due course at the end of the semester, you will be provided with a link that will allow you to evaluate the course. Please take this opportunity to help us improve our teaching and thus your learning success!</p>
+</section>
+<section id="mental-health" class="level1">
+<h1>Mental health</h1>
+<p>If you should feel like you need some help, please consider the following resources available to students.</p>
+<p><strong>If you are experiencing a life-threatening emergency, please dial 112</strong>.</p>
+<p><a href="https://www.unibe.ch/studies/advisory_services/counselling_centre_universities_of_bern/index_eng.html"><strong>Counseling Center</strong></a> Phone: 031 / 635 24 35</p>
+</section>
+<section id="endnotes" class="level1">
+<h1>Endnotes</h1>
+<p>[1] If the instructor should be the one to say or do something that makes a student uncomfortable, the student should feel free to contact the Director of the Prehistoric Archaeology of Bern University.</p>
+<center>
+<em>This site was last updated at 08:58 on 20 Sep 2023</em>
+</center>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
