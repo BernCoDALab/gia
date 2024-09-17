@@ -11,32 +11,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-# Course projects
-Die Durchführung und Bewertung dieses Kurses beruht darauf, dass Sie im Laufe des Semesters ein Projekt bearbeiten. Bevorzugt ist dies ein Projekt über eine Fundstelle, die Sie selbst wählen, da Sie dies dann im Rahmen anderer Veranstaltungen nutzen können. Sollten Sie kein entsprechendes Projekt bzw. keine entsprechende Fundstelle wissen, können Sie gerne eines der folgenden bronze- und eisenzeitlichen Gräberfelder bearbeiten:
-
-```{r , echo=FALSE, warning=FALSE}
-library(magrittr)
-library(kableExtra)
-
-sites_list <- read.csv("sites_list.csv")
-
-sites_list$link <- sapply(sites_list$link, function(x) {
-  l <- length(x)
-  if(l>0)
-  {
-    paste0("[Link](", x, ")")
-  } else {
-    ""
-}}
-)
-
-kable(sites_list, format = "markdown", caption = " ", escape = FALSE) %>%
-  kable_styling(bootstrap_options = "striped",
-                full_width = F,
-                position = "left")
-```
-
 # Classroom conduct
 We are dedicated to providing a welcoming and supportive learning environment for all students, regardless of their background, identity, physical appearance, or manner of communication. Any form of language or behavior used to exclude, intimidate, or cause discomfort will not be tolerated. This applies to all course participants (instructor, students, guests). In order to foster a positive and professional learning environment, we ask the following:
 
@@ -79,19 +53,19 @@ Students who expect to miss class or assignments as a consequence of their relig
 
 This course will revolve around hands-on computing exercises that demonstrate the topics of interest. Therefore, students are strongly recommended to bring their own laptop to class, although students are certainly free to work with one another. **For students without access to a personal laptop**: Please let us know in time, and we will try to find a solution.
 
-All of the software we will be using is free and platform independent, meaning students may use macOS, Linux, or Windows operating systems. In addition to a web browser, we will be using the free Office Suite [**LibreOffice**](https://www.libreoffice.org), the literature database [Zotero](https://www.zotero.org), the GIS software [**QGIS**](https://www.qgis.org). The instructor will be available to help students troubleshoot any software installation problems.
+All of the software we will be using is free and platform independent, meaning students may use macOS, Linux, or Windows operating systems. In addition to a web browser, we will be using the free GIS software [**QGIS**](https://www.qgis.org). The instructor will be available to help students troubleshoot any software installation problems.
 
 # Teaching methodology
 
-This course will introduce new material primarily through prepared slides, videos and the text book. What is learned is then applied to a common project under supervision in the lab time. Students will be expected to work both individually and collaboratively (to the extent possible given the current conditions) during this time and also in general; course content and evaluation will emphasize the communication of ideas and the ability to think critically more so than a specific pathway or method. Other areas of this website provide an overview of the topics to be covered, including links to weekly reading assignments, lecture materials, computer labs, and homework assignments.
+This course will introduce new material primarily through prepared slides and videos. What is learned is then applied under supervision in the lab time. Students will be expected to work both individually and collaboratively (to the extent possible given the current conditions) during this time and also in general; course content and evaluation will emphasize the communication of ideas and the ability to think critically more so than a specific pathway or method. Other areas of this website provide an overview of the topics to be covered, including links to weekly reading assignments, lecture materials, computer labs, and homework assignments.
 
 # Communication
 
 This course will involve a *lot* of communication between and among students and the instructor. Short questions should be addressed to us via email; we will try my best to respond to your message within 24 hours. Under more normal circumstances, detailed questions would be addressed to us in person--either after class or during a scheduled meeting. In this case, however, we will schedule one-on-one or group video calls as needed.
 
-In addition to email and video, we will use a [slack](https://slack.com) workspace ([caa2023.slack.com](https://caa2023.slack.com))to ask questions and assist others.
-
 # Evaluation
+
+The exact terms of evaluation will be decided within the first week of the course. Here is what has been the rule for earlier courses in a similar setting:
 
 Students will be evaluated on their knowledge of course content and their ability to communicate their understanding of the material via individual homework assignments (30%), a final project (40%), peer reviews (20%), and class participation (10%). There will be ? homework assignments, each of which will count toward ?% of the final grade. Please note, **all assignments must be turned in to achieve a passing grade**.
 
