@@ -6,7 +6,7 @@ project:
     - "!lectures/"
 
 website:
-  title: "Computer Aided Archaeology"
+  title: "GIS in Archaeology"
 
   page-navigation: true
 
