@@ -10,5 +10,3 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Handing in
 
 Send your homework before the homework date to [martin.hinz@unibe.ch](mailto:martin.hinz@unibe.ch).
-
-Homework is done in groups. Please indicate your group members in the email.
