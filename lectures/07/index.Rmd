@@ -1,0 +1,438 @@
+---
+title: "GIS in Archaeology"
+subtitle: "07 - Interpolation"
+author: "Martin Hinz"
+institute: "Institut für Archäologische Wissenschaften, Universität Bern"
+fontsize: 9pt
+date: "28/10/20"
+output:
+  xaringan::moon_reader:
+    chakra: "../libs/remark-latest.min.js"
+    css: ["../libs/default.css", "../libs/default-fonts.css", "../libs/customize.css"]
+    lib_dir: "libs"
+    seal: false
+    nature:
+      beforeInit: "../libs/macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      fig_caption: yes
+      ratio: "16:10"
+---
+class: title-slide, center, middle
+```{r, echo = FALSE}
+# https://stackoverflow.com/questions/25646333/code-chunk-font-size-in-rmarkdown-with-knitr-and-latex
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('# ', rmarkdown::metadata$title)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('## ', rmarkdown::metadata$subtitle)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('### ', rmarkdown::metadata$author)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('#### ', rmarkdown::metadata$institute)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat(rmarkdown::metadata$date)
+```
+.footnote[
+.right[
+.tiny[
+You can download a [pdf of this presentation](gis_in_archaeology07.pdf).
+]
+]
+]
+---
+<!-- opening shapefile -->
+## Let's Get Started
+1. [Click this link](data/neolithic_expansion.zip) and download 14C dates for the expansion of the Neolithic
+2. Open QGIS
+3. Start a new project and Add the layer
+4. Add a Background Layer to know where we are...
+
+---
+
+## Interpolation
+
+> is a type of estimation, a method of constructing new data points within the range of a discrete set of known data points. - *wikipedia*
+
+ 
+> Spatial interpolation is the process of using points with known values to estimate values at other unknown points. - *QGIS Manual*
+
+Example: Temperature of an area, based on the measurements of certain weather stations
+
+.center[
+![:width 45%](images/temperature_map.png)
+.caption[Source: https://docs.qgis.org]]
+---
+## Interpolation
+
+> For many characteristics (e.g. temperature, precipitation, population density), the area-wide collection of measured values is not feasible due to financial, personnel, time, etc. constraints. It is therefore necessary to estimate values for unsampled locations from samples. The so-called interpolation is a mathematical solution to the problem of bringing values from point to area. It is based on the assumption that the values at two points are the more similar the closer these points are together. - *https://gis.uster.ch, translation MH*
+
+In Archaeology: We often only have this point information. If we assume that the situation at other points in the vicinity is similar to the one for which we have point data (underlying continuous process), interpolations can help to understand these processes.
+
+.center[
+![:width 45%](images/rsif20150166-g1.jpg)
+.caption[Source: Fort 2015]]
+---
+## How to bring points into area?
+
+.pull-left[
+1. Every space around a point gets its value
+  - either as **raster** or **vector**
+  - Gridding, Thiessen-Polygons, Nearest Neighbor
+2. Every space between points gets a value that is dependent on both points and its distance to them
+  - Triangulation, in GIS most often a **raster**
+  - Delauny Triangulation rsp. TIN (Triangulated Irregular Network)
+3. The value of every space (pixel) is influenced by all surrounding actual points
+  - linearly weighted combination of values from nearby points
+  - Inverse Distance Weighted (IDW)
+4. more complicated or informed methods...
+]
+.pull-right[
+![](images/gridding_approaches.png)
+.caption[Source: https://www.battelleecology.org]
+]
+
+---
+## Gridding
+
+- Most simple approach
+- produces raster grids with 'gaps'
+
+1. create a regular grid over the mapping area
+2. for every cell where there is one value, this cell gets the value
+3. for every cell where there are multiple values, this cell gets the mean value
+4. every other cell remains empty
+
+![:width 48%](images/GUID-50BB42BB-0E81-4D59-85FB-9F75F5D3069B-web.gif) ![:width 48%](images/7386426.png)
+.caption[Source: https://desktop.arcgis.com/]
+
+Not very convenient for areal analysis...
+---
+## Gridding in QGIS
+
+1. Click on 'Raster > Conversion > Rasterize (Vector to Raster)'
+2. Select the Input Layer
+3. Select 'CALBP' as the field that should be rastered
+4. Select 'georeferenced units' as raster units
+5. Select 100000 m as pixel size for width and height
+6. Select the Extend of the point layer as extend for the resulting raster
+7. Click on 'Run'
+
+![:width 48%](images/gridding01.png) ![:width 48%](images/gridding02.png)
+---
+## Gridding in QGIS result
+
+- you should see a raster covering the points
+- pixel size defines the resolution
+- if you change symbology to pseudocolor, it already looks reasonable
+
+![:width 48%](images/gridding03.png) ![:width 48%](images/gridding04.png)
+
+---
+## Thiessen Polygons
+
+.pull-left[
+> A Voronoi diagram, also called Thiessen polygons or Dirichlet decomposition, is a decomposition of space into regions determined by a given set of points in space, here called centres. - german wikipedia, translated
+
+Technique to estimate the area affected mainly by a point within a set of points
+
+1. connect all neighbouring points
+2. draw a orthogonal line at the middle of the connections
+3. stop, when you meet other lines
+]
+
+.pull-right[
+![:width 60%](images/Voronoi_growth_euclidean.gif)
+![:width 60%](images/Thiessen-polygon.png)
+]
+---
+## Thiessen Polygons in QGIS
+
+1. Click on 'Vector > Geometry tools > Voronoi polygons'
+2. (You could define an additional buffer around your working area...)
+3. Just click on 'Run'
+
+![:width 48%](images/voronoi01.png) ![:width 48%](images/voronoi02.png)
+---
+## Thiessen Polygons in QGIS result
+
+.pull-left[
+The result is are polygons around your points that contain all the values from the attribute table of the points.
+
+You can check by looking in the attribute table
+
+You can use symbology > graduated to use the CALBP field for colorising
+
+The result is this piece of art to the right, blue means early, red means late neolithisation
+
+Of course, transparency is a nice option here, too.
+]
+
+.pull-right[
+![:width 48%](images/voronoi03.png)
+
+![:width 48%](images/voronoi04.png)
+
+![:width 48%](images/voronoi05.png)
+]
+---
+## Thiessen Polygons as Raster > Nearest Neighbor Interpolation
+
+You can also create a raster version quite easily.
+
+Either you raster the Thiessen Polygons...
+
+![](images/GUID-0E3D651A-34B6-44D2-AE29-B527B86547A1-web.gif)
+
+Or you use the Nearest Neighbor Interpolation (not to mix up with the analysis)
+
+---
+## Nearest Neighbor Interpolation in QGIS
+
+1. Select 'Raster > Analysis > Grid (Nearest Neighbor)'
+2. Select the input layer and specify the field CALBP as 'z value from field'
+3. click on 'Run'
+
+![:width 48%](images/nni01.png) ![:width 48%](images/nni02.png)
+
+---
+## Nearest Neighbor Interpolation in QGIS Result
+
+The resulting raster is equivalent to the Thiessen Polygon Solution... only as raster
+
+![:width 48%](images/nni03.png) ![:width 48%](images/nni04.png)
+---
+## TIN (Triangulated Irregular Network)
+
+- Another interpolation technique placing more focus on dynamics between the actual points
+- the surface is divided in triangles, where the data points are the corners
+- these triangles are placed in 3d (x,y and the interpolated value as z) and rastered
+
+![:width 38%](images/L05_fig23.gif) ![:width 58%](images/unnamed.gif)
+.caption[Source: https://courseware.e-education.psu.edu; http://sar.kangwon.ac.kr/]
+---
+## TIN Benefits / Disadvantages
+
+- more dynamic interpolation than simple gridding or Nearest Neighbor
+- interactions/differences between data points are better interpolated
+- very good for interpolating rather regular elevation measurements
+
+### but
+
+- highly irregulare point patterns can result in 'strange' networks
+
+![:width 48%](images/gc082_1.gif) ![:width 48%](images/4-Figure4-1.png)
+.caption[Source: http://www.geocomputation.org; Bhargava et al. 2013]
+
+---
+## TIN in QGIS
+
+.pull-left[
+1. In the toolbox ![](images/toolbox_icon.png), search for 'tin'
+2. Select 'TIN Interpolation'
+3. Select the input layer
+4. Select CALBP as interpolation attribute
+5. Click on the '+' icon
+6. Select the extend to be calculated from the layer extend
+7. Specify the resolution either in width or in height
+8. (if you want to see the network itself, select eg. Temporary Layer from the Triangulation)
+9. Click on 'Run'
+]
+
+.pull-right[
+![:width 90%](images/tin01.png) ![:width 90%](images/tin02.png)
+]
+
+---
+## TIN result
+
+- As a result, you should see grayish triangles
+- After selecting pseudocolor, the expansion of the neolithic is again nicely visible
+- if you selected the output of the Triangulation, you can overlay this (right picture)
+
+![:width 48%](images/tin03.png) ![:width 48%](images/tin04.png)
+
+---
+## Inverse Distance Weighted (IDW)
+
+- archaeological data most of the time represent a biased random selection
+- the individual date is 'untrustworthy'
+- probably you are more interested in the underlying pattern than the value of the individual date
+- Inverse Distance Weighted (IDW) consider all points around a certain cell (pixel) to be interpolated
+- the further away a point is, the less impact it should have
+
+> Tobler's first law of geography: everything is related to everything else, but near things are more related than distant things
+
+.center[
+![:width 55%](images/idw_interpolation.png)
+]
+.caption[Source: https://docs.qgis.org]
+
+---
+## Inverse Distance Weighted (IDW)
+
+.pull-left[
+for a pixel to interpolated:
+
+- take all the points and their values
+- 'calculate a mean' in so far, as values close to the pixel have a higher impact than values further away
+- how much distance is 'penalizing' depends on the 'power' value:
+  - higher power result in points further away have lesser impact
+]
+
+.pull-right[
+![](images/image001.gif)
+]
+.center[
+![:width 30%](images/image003.gif)
+![:width 48%](images/Shepard_interpolation_2.png)
+
+]
+.caption[Source: http://www.geography.hunter.cuny.edu. Left image: green line: smaller power value, dashed line: higher power value]
+---
+## IDW in QGIS
+
+.pull-left[
+1. In the toolbox ![](images/toolbox_icon.png), search for 'idw'
+2. Select 'IDW Interpolation'
+3. Select the input layer
+4. Select CALBP as interpolation attribute
+5. Click on the '+' icon
+6. Select the extend to be calculated from the layer extend
+7. Specify the resolution either in width or in height
+8. Specify the power P. You can leave it for now at the default value 2.
+9. Click on 'Run'
+]
+
+.pull-right[
+![:width 90%](images/idw01.png) ![:width 90%](images/idw02.png)
+]
+---
+## IDW in QGIS result
+
+.pull-left[
+- after changing to pseudocolor, the result is much more regionalised
+- the higher the power, the more the individual points will be relevant (more 'measles')
+- the lesser the power, the more the general pattern will be visible (smoother)
+
+]
+.pull-right[
+![](images/image003.gif)
+]
+.center[
+![:width 48%](images/idw03.png) ![:width 48%](images/idw04.png)
+.caption[Left: Power 2. Right: Power 0.5.]
+]
+---
+## Contours
+
+.pull-left[
+- Colors give already a good impression about the general pattern
+- Contours are lines connecting positions of the same value in a raster dataset representing continuous phenomena
+- Contour lines are useful in surface mapping, as they make it possible to visualise both flat and steep surfaces (distance between contour lines) and ridges and valleys (approaching and diverging lines)
+- they also can be used to enhance the visualisation of interpolation
+]
+
+.pull-right[
+![](images/Curvas_nivel_30m.jpg)
+.caption[Source: https://www.giscourse.com.]
+]
+---
+## Contours in QGIS
+
+.pull-left[
+1. Select 'Raster > Extraction > Contour' from the menue
+2. Select the input layer
+3. (In multichannel raster you might need to select the correct channel)
+4. Specify the distance between the contour lines
+5. (If your range should not start from 0, you could define an offset)
+6. Click on 'Run'
+]
+
+.pull-right[
+![:width 90%](images/contour01.png) ![:width 90%](images/contour02.png)
+]
+---
+## Contours in QGIS Result
+
+Now you should see the interpolation enhanced with contour lines, that make it easier to spot patterns...
+
+.center[
+![:width 50%](images/contour03.png)
+]
+---
+## What We've Covered
+
+--
+.pull-left[
+
++ What is interpolation, and what is it good for
++ Gridding
++ Thiessen Polygons and Nearest Neighbor
++ TIN (Triangulated Irregular Network)
++ Inverse Distance Weighted (IDW)
++ Contour lines
+]
+--
+.pull-right[
+### What to choose for what?
+
+- Gridding: rarely the best option
+- Thiessen Polygons: if you assume homogenous, delimited areas
+- TIN: if the actual values are more relevant
+- IDW: if the underlying process is more relevant
+]
+.center[
+![:width 60%](images/gridMethod_FeaturesTbl.png)
+
+.caption[Source: https://www.battelleecology.org]
+]
+---
+
+## Homework
+
++ Get the [archaeological sites of the Kanton bern](data/fundstellen_mit_hoehen.zip) with elevation (field: altitude1)
++ try out different interpolation algorithms
++ Which algorithm gives the best result for interpolation of elevation?
++ Send me your assessement and the best result via email (martin.hinz@iaw.unibe.ch) as screenshot or exported map
+
+---
+class: inverse, middle, center
+# Any questions?
+
+![:width 20%](images/destruction_island.jpg)
+
+.caption[Source: https://www.instagram.com/sadtopographies]
+
+.footnote[
+.right[
+.tiny[
+You might find the course material (including the presentations) at
+
+https://github.com/MartinHinz/gia_hs_2020
+
+You can see the rendered presentations at
+
+http://martinhinz.github.io/gia_hs_2020
+
+You can contact me at
+
+<a href="mailto:martin.hinz@iaw.unibe.ch">martin.hinz@iaw.unibe.ch</a>
+]
+]
+]

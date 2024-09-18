@@ -1,0 +1,463 @@
+---
+title: "GIS in Archaeology"
+subtitle: "05 - Handling Spatial Data"
+author: "Martin Hinz"
+institute: "Institut für Archäologische Wissenschaften, Universität Bern"
+fontsize: 9pt
+date: "14/10/20"
+output:
+  xaringan::moon_reader:
+    chakra: "../libs/remark-latest.min.js"
+    css: ["../libs/default.css", "../libs/default-fonts.css", "../libs/customize.css"]
+    lib_dir: "libs"
+    seal: false
+    nature:
+      beforeInit: "../libs/macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      fig_caption: yes
+      ratio: "16:10"
+---
+class: title-slide, center, middle
+```{r, echo = FALSE}
+# https://stackoverflow.com/questions/25646333/code-chunk-font-size-in-rmarkdown-with-knitr-and-latex
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('# ', rmarkdown::metadata$title)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('## ', rmarkdown::metadata$subtitle)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('### ', rmarkdown::metadata$author)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('#### ', rmarkdown::metadata$institute)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat(rmarkdown::metadata$date)
+```
+
+.footnote[
+.right[
+.tiny[
+You can download a [pdf of this presentation](gis_in_archaeology05.pdf).
+]
+]
+]
+---
+## Things to cover
+
++ Manipulation of vector data
+
++ Spatial selection of vector data
+
++ Working with buffers
+
++ Creation of a Thematic Map (Choropleth) by combining vector data
+
+---
+class:center,middle,inverse
+# Basic Map Elements
+
+---
+class:center,middle
+
+## Points  
+![:width 50%](images/point_feature.png)
+.caption[http://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/vector_data.html#overview]
+
+---
+class:center,middle
+
+## Lines
+![:width 50%](images/polyline_feature.png)
+.caption[http://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/vector_data.html#overview]
+
+---
+class:center,middle
+
+## Polygons
+![:width 50%](images/polygon_feature.png)
+.caption[http://docs.qgis.org/2.8/en/docs/gentle_gis_introduction/vector_data.html#overview]
+
+---
+## Shapefiles
+--
+        
++ Basic file for storing map elements
+--
+
++ Stores spatial data, like points, lines, and polygons
+--
+
++ Multiple files comprise a "shapefile"
+
+--
+
+![img-center-80](images/file_struct1.png)
+---
+# Reworking of Shapefiles
+
++ Spatial (vector) data often can be downloaded, or created using digitalisation of scanned maps (last session)
+
++ Sometimes it is necessary to combine informations (geometries) for the desired result
+
++ for theses tasks there are geometry processing tools
+
+![](images/geo_processing01.png)
+---
+<!-- opening shapefile -->
+## Let's Get Started
+1. [Click this link](data/kantonsgrenzen.zip) and download the cantonal borders of Switzerland (shapefile) to your desktop
+2. [Click this link](data/seen.zip) and download the lakes of Switzerland (shapefile) to your desktop
+3. [Click this link](data/14c_daten.csv) and download some 14C data (csv) also to your desktop
+4. Open QGIS
+5. Start a new project and Add all layers 
+
+---
+## Adding a CSV Layer...Reminder
+
++ csv data are 'delimited text' data, so use the approriate import tool
++ the coordinates are store as lat/lng in columns named accordingly
+  + lat -> *Latitude:* a geographic coordinate that specifies the **north–south** position of a point on the Earth's surface -> y-coordinate
+  + lng -> *Longitude:* a geographic coordinate that specifies the **east–west** position of a point on the Earth's surface -> x-coordinate
++ latitude/longitude -> World Geodetic System: WGS 84 -> **EPSG 4326**
+
+.center[![:width 50%](images/csv_import01.png)]
+
+---
+## Tasks for today
+
++ Extract the 14C data for Switzerland
++ Count how many data are in lakes and within 1 km around lakes
++ visualise the mean age of 14C dates per canton
+
+.center[![:width 50%](images/tasks01.png)]
+
++ first, we need a polygon of Switzerland (or create one ourself)
+
+---
+## Vector overlay
+.pull-left[
+Combine different layers for to produce a combined result
+
+### Multiple Options
++ Clip (Intersection)
++ Difference (Substraction)
++ Symmetric Difference (Disjunction)
++ Union
+
+![](images/jccb_0503.png)
+.caption[https://moderndilettante.wordpress.com/category/boole/]
+]
+.pull-right[![](images/geo_processing01.png)]
+
+---
+## Combining lakes with cantons
+
+.pull-left[
+The cantonal borders exclude the lakes! Check yourself...
+
+We need to combine the lakes with the borders shapefile!
+
+.tiny[*Not strictly necessary for our task at hand, but serves didactic purpose...*]
+
+**Which algorithm to use?**
+
+![](images/jccb_0503.png)
+.caption[https://moderndilettante.wordpress.com/category/boole/]
+]
+.pull-right[
+![](images/geo_processing02.png)
+
+![](images/geo_processing03.png)
+]
+
+---
+## Union
+
++ Select Union from Vector > Geometry-Processing
++ Select the cantonal borders as one layer
++ Select the lakes as second layer
++ Temporary Layer is fine, so no need to specify storage location
++ Check 'Open after success' checkbox
++ Click 'Run'
+
+
+.center[
+![:width 75%](images/geo_processing04.png)
+]
+---
+## Union Result
+
++ A layer containing all polygons from both layers
++ You can check in the attribute table:
+
+.center[
+![:width 75%](images/geo_processing05.png)
+]
+
+---
+## Dissolve
+
+.pull-left[
++ We need only one polygon -> Combining all polygons to one
++ use disolve tool (Vector > Geometry-Processing)
++ Select Union Layer as Input Layer
++ Temporary Layer as output is fine
++ Click 'Run'
+]
+
+.pull-right[
+![:width 75%](images/geo_processing06.png)
+
+![:width 75%](images/geo_processing07.png)
+]
+
+---
+## Wrong or unnecessary Vertices 
+
+If we zoom in, some Structure within our polygon resulted from non-matching spatial data:
+
+.right[
+![:width 75%](images/geo_processing08.png)
+]
+
+---
+## Edit/Remove wrong or unnecessary Vertices 
+
+.pull-left[
++ Click on 'Toggle Edit Mode' ![](images/geo_processing09a.png)
++ Click on Vertices Tool ![](images/geo_processing09b.png)
++ Select unnecessary vertices and remove
++ Save by and 'Toggle Edit Mode' ![](images/geo_processing09a.png)
+
+*in the same tool, you also can move points of your polygons to different locations...*
+]
+
+.pull-right[
+![](images/geo_processing09.png)
+]
+---
+## Toolbox
+
+.pull-left[
+For our next task, we need a tool that is not available from the menu
+
+For this, we activate the toolbox sidebar/window ![](images/geo_processing10a.png)
+
+This toolbox contains all menu tools + a lot more
+
+It also features a search bar for fast and easy access
+]
+
+.pull-right[
+![](images/geo_processing10.png)
+]
+
+
+---
+## Extract points based on Polygon (1)
+
+To extract the 14C data contained within the 'Switzerland'-polygon, we access the 'Extract by Position' tool. Start typing in the search field to find it!
+
+![](images/geo_processing11.png)
+
+---
+## Extract points based on Polygon (2)
+
+.pull-left[
++ Select the 14c-layer as layer to extract from
++ Select 'are contained' as Option
++ Select the 'Dissolved' Layer as source
++ Temporary Layer might be fine
++ Click on 'Run'
++ The resulting Layer should only contain the 14C Data within Switzerland
+
++ Finally save your layer as shapefile!
+]
+
+.pull-right[
+![](images/geo_processing11.png)
+![](images/geo_processing12.png)
+]
+---
+## Check the number of 14C Dates within lakes (1)
+
+*(Spatial Query)*
+
+Lets start with our first analytical procedure: How many 14C dates are comming from lakes?
+
+To check this, we need the lakes and the 14C Data:
+
+![:width 60%](images/count_in_polygon01.png)
+---
+## Check the number of 14C Dates within lakes (2)
+
+This time, the tool is accessible via the menue 'Vector > Analytical tools':
+
+![:width 48%](images/count_in_polygon02.png) ![:width 48%](images/count_in_polygon03.png)
+
++ select the lakes layer as polygon layer
++ select the 14C layer as points layer
++ (you can specify a weighting and a classification field, too)
++ the name of the resulting count column is 'NUMPOINTS', that might be ok for now
++ temporary layer might be ok for now
++ click on 'Run'
+
+---
+## Check the number of 14C Dates within lakes (2)
+
+A new layer is created that contains the original information from the lakes layer + the number of 14C data as 'NUMPOINTS'. You can check in the attribute table.
+
+![](images/count_in_polygon04.png)
+
+---
+## Check the number of 14C Dates within 1km around lakes (1)
+
+.pull-left[
+To check, how many 14C Data are within a buffer of 1 km around the lakes, we have to create a buffer first.
+
++ Select Buffer from 'Vector > Geometry processing tools'
++ Select the lakes layer as input layer
++ Select 1km as distance
++ most of the other options refer to the shape of the buffer... we can leave them to default now
++ the checkbox 'dissolve' merges all connected buffers, we do not want that here
++ Click on 'Run'
+]
+
+.pull-right[
+![:width 90%](images/buffer01.png)
+
+![:width 90%](images/buffer02.png)
+]
+
+---
+## Check the number of 14C Dates within 1km around lakes (2)
+
++ The resulting Vector layer contains all informations of the lakes layer, only that the lakes are 1km enlarged
++ You can now count points in polygons like before, but you should select the 'buffered' layer as your input
++ The number of 14C dates are now much larger per lake
+
+---
+## Calculate mean 14C age per canton (1)
+
+Using GIS, you can excecute statistical procedures and visualise the result in a Choropleth.
+
+(the German term for this is also Choropleth...)
+
+![:width 50%](images/median_reineinkommen.gif)
+
+#####Source: http://www.estv2.admin.ch/
+
+---
+## Calculate mean 14C age per canton (2)
+
+*(Spatial Join)*
+
+To start, we need the cantonal borders and the 14C data and the Toolbox ![](images/geo_processing10a.png).
+
+The command is 'Join attributes by location (summary)'
+
+![:width 80%](images/spatial_join01.png)
+---
+## Calculate mean 14C age per canton (3)
+
++ Select the cantonal borders as input layer
++ Select the 14C data as joined layer
++ Select intersection as condition
+
+![:width 80%](images/join_summary01.png)
+---
+## Calculate mean 14C age per canton (4)
+
++ in Summary fields, select bp (uncalibrated 14C date) as field
++ in Calculated Summaries, select 'mean' as statistic
++ temporary layer might be ok
++ press 'Run'
+
+![:width 48%](images/join_summary02.png) ![:width 48%](images/join_summary03.png)
+
+---
+## Calculate mean 14C age per canton (5)
+
+In the Attribute Table, now you can see the mean bp age per canton
+
+![](images/join_summary04.png)
+
+---
+## Visualise mean 14C age per canton
+
+Now we can color the cantons according to the mean BP age
+
++ Open the **Properties** of the layer (right click on the layer) and Select there the **Symbology** tab
+
++ Select 'Graduated' as symbol and Classify the values
+
++ click on 'OK'
+
++ Now you should be able to see the age by color
+
+![:width 48%](images/join_summary05.png) ![:width 48%](images/join_summary06.png)
+
+---
+## What We've Covered
+--
+
++ Editing and joining Geometries
+--
+
++ Extract features based on location in relation to other vector data
+--
+
++ Extract and summarise information based on location in relation to other vector data
+
+---
+
+## Homework
+
++ Get the [north](data/kreise_bern_nord.zip) and the [south part](data/kreise_bern_sued.zip) of the Kanton of Bern
++ Unite them to get a map of the whole Kanton
++ Get the [Location of archaeological sites of the Kanton of Bern](data/fundstellen_bern.zip)
++ Count the number of sites in each 'Amtsbezirk'
++ Make a Map showing the number of sites color coded
++ Send me the map
+
+
+---
+class: inverse, middle, center
+# Any questions?
+
+![:width 20%](images/pointless_mountain.png)
+
+.caption[Source: https://www.instagram.com/sadtopographies]
+
+.footnote[
+.right[
+.tiny[
+You might find the course material (including the presentations) at
+
+https://github.com/MartinHinz/gia_hs_2020
+
+You can see the rendered presentations at
+
+http://martinhinz.github.io/gia_hs_2020
+
+You can contact me at
+
+<a href="mailto:martin.hinz@iaw.unibe.ch">martin.hinz@iaw.unibe.ch</a>
+]
+]
+]

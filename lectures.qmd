@@ -27,14 +27,16 @@ schedule$video <- sapply(schedule$video, function(x) {
 }}
 )
 
+n_lectures <- nrow(schedule)
+
 schedule$slides[is.na(schedule$slides)] <- ""
-schedule$slides <- paste0("[", schedule$slides, "](lectures/", schedule$slides, ".html)")
+schedule$slides <- paste0("[", schedule$slides, "](lectures/", sprintf("%02d", schedule$session_nr), "/", schedule$slides, ".html)")
 
 schedule$slides_pdf[is.na(schedule$slides_pdf)] <- ""
-schedule$slides_pdf <- paste0("[", schedule$slides_pdf, "](lectures/", schedule$slides_pdf, ".pdf)")
+schedule$slides_pdf <- paste0("[", schedule$slides_pdf, "](lectures/", sprintf("%02d", schedule$session_nr), "/", schedule$slides_pdf, ".pdf)")
 
 schedule$reading[is.na(schedule$reading)] <- ""
-schedule$reading <- paste0("[", schedule$reading, "](lectures/", schedule$reading, ".html)")
+schedule$reading <- paste0("[", schedule$reading, "](lectures/", sprintf("%02d", schedule$session_nr), "/", schedule$reading, ".html)")
 
 schedule$lab_video[is.na(schedule$lab_video)] <- ""
 schedule$lab_video <- strsplit(schedule$lab_video, ";")
@@ -52,21 +54,11 @@ columns_for_display <- c("date",
                         "title",
                         "topics",
                         "slides",
-                        "slides_pdf",
-                        "video",
-                        "reading")
+                        "slides_pdf")
 
 schedule_for_display <- schedule[,columns_for_display]
 ```
 
 ```{r generate_table, echo=FALSE, warning=FALSE}
-#kable(schedule_for_display, format = "html", caption = " ", escape = F) %>%
-#  kable_styling(bootstrap_options = "striped",
-#                full_width = F,
-#                position = "left") %>%
-#  column_spec(1, width = "8em") %>%
-#  column_spec(2, width = "20em")
-gt::gt(data=schedule_for_display) %>% gt::fmt_markdown(columns = c(slides, slides_pdf, reading))
-#gt:fmt_markdown(gt::gt(schedule_for_display), columns = slides)
-#schedule_for_display
+gt::gt(data=schedule_for_display) %>% gt::fmt_markdown(columns = c(slides, slides_pdf))
 ```
