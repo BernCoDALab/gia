@@ -350,9 +350,9 @@ class:center,middle
 
 Getting Data
 
-1. [Click this link](data/points.zip) and download the file to your desktop
+1. [Click this link](https://github.com/BernCoDALab/gia/raw/main/lectures/01/data/points.zip) and download the file to your desktop
 2. Unzip the file
-3. [Click this link](data/background.tiff) and download the other file also to your desktop
+3. [Click this link](https://github.com/BernCoDALab/gia/raw/main/lectures/01/data/background.tiff) and download the other file also to your desktop
 3. Open QGIS
 
 ![](images/qgis_launch.png)
