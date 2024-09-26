@@ -9,4 +9,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Handing in
 
-Send your homework before the homework date to [martin.hinz@unibe.ch](mailto:martin.hinz@unibe.ch).
+Send your homework before the homework date to [martin.hinz\@unibe.ch](mailto:martin.hinz@unibe.ch).
+
++---------------------------------------------------------+---------------+-----------------------------------------------------------------------------------+
+| Homework                                                | Homework Date | Homework Data                                                                     |
++=========================================================+===============+===================================================================================+
+| -   Style the polygons however you’d like               | 01.10.24      | [polygons.gpkg](https://berncodalab.github.io/gia/lectures/01/data/polygons.gpkg) |
+|                                                         |               |                                                                                   |
+| -   Change the outline color or add a pattern           |               |                                                                                   |
+|                                                         |               |                                                                                   |
+| -   Style the labels                                    |               |                                                                                   |
+|                                                         |               |                                                                                   |
+| -   Change the font, the font size, or other attributes |               |                                                                                   |
+|                                                         |               |                                                                                   |
+| -   Send me a screenshot                                |               |                                                                                   |
++---------------------------------------------------------+---------------+-----------------------------------------------------------------------------------+
