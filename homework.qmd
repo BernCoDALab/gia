@@ -11,16 +11,23 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Send your homework before the homework date to [martin.hinz\@unibe.ch](mailto:martin.hinz@unibe.ch).
 
-+---------------------------------------------------------+---------------+---------------------------------------------------------------------------------------------+
-| Homework                                                | Homework Date | Homework Data                                                                               |
-+=========================================================+===============+=============================================================================================+
-| -   Style the polygons however you’d like               | 01.10.24      | [polygons.gpkg](https://github.com/BernCoDALab/gia/raw/main/lectures/01/data/polygons.gpkg) |
-|                                                         |               |                                                                                             |
-| -   Change the outline color or add a pattern           |               |                                                                                             |
-|                                                         |               |                                                                                             |
-| -   Style the labels                                    |               |                                                                                             |
-|                                                         |               |                                                                                             |
-| -   Change the font, the font size, or other attributes |               |                                                                                             |
-|                                                         |               |                                                                                             |
-| -   Send me a screenshot                                |               |                                                                                             |
-+---------------------------------------------------------+---------------+---------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------------------------------------------------------------------------------+
+| Homework                                                                                                         | Homework Date | Homework Data                                                                                           |
++==================================================================================================================+===============+=========================================================================================================+
+| -   Style the polygons however you’d like                                                                        | 01.10.24      | [polygons.gpkg](https://github.com/BernCoDALab/gia/raw/main/lectures/01/data/polygons.gpkg)             |
+|                                                                                                                  |               |                                                                                                         |
+| -   Change the outline color or add a pattern                                                                    |               |                                                                                                         |
+|                                                                                                                  |               |                                                                                                         |
+| -   Style the labels                                                                                             |               |                                                                                                         |
+|                                                                                                                  |               |                                                                                                         |
+| -   Change the font, the font size, or other attributes                                                          |               |                                                                                                         |
+|                                                                                                                  |               |                                                                                                         |
+| -   Send me a screenshot                                                                                         |               |                                                                                                         |
++------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------------------------------------------------------------------------------+
+| -   Add the files you can download from the homework page to QGIS (note: the projection epsg is in the filename) | 08.10.24      | [background_4326.tif](https://github.com/BernCoDALab/gia/raw/main/lectures/02/data/background_4326.tif) |
+|     -   background_4326.tif                                                                                      |               |                                                                                                         |
+|     -   cities_2056.csv                                                                                          |               | [cities_2056.csv](https://github.com/BernCoDALab/gia/raw/main/lectures/02/data/cities_2056.csv)         |
+|     -   lakes_3857.gpkg                                                                                          |               |                                                                                                         |
+| -   Style as you like                                                                                            |               | [lakes_3857.gpkg](https://github.com/BernCoDALab/gia/raw/main/lectures/02/data/lakes_3857.gpkg)         |
+| -   Send me a screenshot                                                                                         |               |                                                                                                         |
++------------------------------------------------------------------------------------------------------------------+---------------+---------------------------------------------------------------------------------------------------------+

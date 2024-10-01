@@ -39,7 +39,7 @@
     "href": "homework.html#handing-in",
     "title": "Homework",
     "section": "",
-    "text": "Send your homework before the homework date to martin.hinz@unibe.ch.\n\n\n\nHomework\nHomework Date\nHomework Data\n\n\n\n\n\nStyle the polygons however you’d like\nChange the outline color or add a pattern\nStyle the labels\nChange the font, the font size, or other attributes\nSend me a screenshot\n\n01.10.24\npolygons.gpkg"
+    "text": "Send your homework before the homework date to martin.hinz@unibe.ch.\n\n\n\nHomework\nHomework Date\nHomework Data\n\n\n\n\n\nStyle the polygons however you’d like\nChange the outline color or add a pattern\nStyle the labels\nChange the font, the font size, or other attributes\nSend me a screenshot\n\n01.10.24\npolygons.gpkg\n\n\n\nAdd the files you can download from the homework page to QGIS (note: the projection epsg is in the filename)\n\nbackground_4326.tif\ncities_2056.csv\nlakes_3857.gpkg\n\nStyle as you like\nSend me a screenshot\n\n08.10.24\nbackground_4326.tif\ncities_2056.csv\nlakes_3857.gpkg"
   },
   {
     "objectID": "homework.html#getting-help",
@@ -53,6 +53,6 @@
     "href": "homework.html",
     "title": "Homework",
     "section": "",
-    "text": "Send your homework before the homework date to martin.hinz@unibe.ch.\n\n\n\nHomework\nHomework Date\nHomework Data\n\n\n\n\n\nStyle the polygons however you’d like\nChange the outline color or add a pattern\nStyle the labels\nChange the font, the font size, or other attributes\nSend me a screenshot\n\n01.10.24\npolygons.gpkg"
+    "text": "Send your homework before the homework date to martin.hinz@unibe.ch.\n\n\n\nHomework\nHomework Date\nHomework Data\n\n\n\n\n\nStyle the polygons however you’d like\nChange the outline color or add a pattern\nStyle the labels\nChange the font, the font size, or other attributes\nSend me a screenshot\n\n01.10.24\npolygons.gpkg\n\n\n\nAdd the files you can download from the homework page to QGIS (note: the projection epsg is in the filename)\n\nbackground_4326.tif\ncities_2056.csv\nlakes_3857.gpkg\n\nStyle as you like\nSend me a screenshot\n\n08.10.24\nbackground_4326.tif\ncities_2056.csv\nlakes_3857.gpkg"
   }
 ]

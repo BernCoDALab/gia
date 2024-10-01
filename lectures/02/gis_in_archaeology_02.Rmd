@@ -148,6 +148,45 @@ You can download a [pdf of this presentation](https://berncodalab.github.io/gia/
 
 + So sometimes you end up with this:
 ![img](images/file_struct2.png)
+---
+## Overview of GeoPackage
+
+.pull-left[
+* What is GeoPackage?
+	*	A data format for geographic information systems (GIS).
+	*	Platform-independent, open, and standards-based.
+	*	Uses an SQLite database to store both raster and vector data.
+* Key Features:
+	*	Single file for easy data sharing and use.
+	*	Efficient, especially for mobile and offline environments.
+	*	Supports extensions for flexibility (OGC-approved and custom extensions).
+* Why Use GeoPackage?
+	*	Lightweight and portable.
+	*	Facilitates easy data management and spatial queries.
+]
+
+.pull-right[
+![img](images/geopkg.png)
+]
+---
+
+## GeoPackage vs. Shapefiles
+
+1. **File Structure:**
+   - **GeoPackage:** Single file (SQLite-based).
+   - **Shapefile:** Requires multiple files (.shp, .shx, .dbf, etc.).
+
+2. **Data Handling:**
+   - **GeoPackage:** Stores both vector and raster data (multiple geometry type per file possible)
+   - **Shapefile:** Vector data only.
+
+3. **Efficiency:**
+   - **GeoPackage:** Compact, better suited for mobile/offline use.
+   - **Shapefile:** Larger, more fragmented.
+
+4. **Attributes:**
+   - **GeoPackage:** Supports larger field names and Unicode.
+   - **Shapefile:** Limited field length and ASCII-only.
 
 ---
 
@@ -493,6 +532,16 @@ Bicycles added.
 --
 
 + Querying features
+
+---
+
+# Homework
++ Add the files you can download from the homework page to QGIS (note: the projection epsg is in the filename)
+  + background_4326.tif
+  + cities_2056.csv
+  + lakes_3857.gpkg
++ Style as you like
++ Send me a screenshot
 
 ---
 class: inverse, middle, center
