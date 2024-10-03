@@ -5,7 +5,12 @@ date,session_nr,title,topics,slides,slides_pdf,reading,video,lab_video,data,inst
 * Change the font, the font size, or other attributes
 * Send me a screenshot",,,01.10.24
 25.09.24,,*no class*, , , , , ,,,, ,,,
-02.10.24,2,Working with QGIS,Layer Control;Data Formats;Filter and Query;Zoom and Pan;Export;Projections,gis_in_archaeology_02,gis_in_archaeology_02, , ,,,, ,,,
+02.10.24,2,Working with QGIS,Layer Control;Data Formats;Filter and Query;Zoom and Pan;Export;Projections,gis_in_archaeology_02,gis_in_archaeology_02, , ,https://tube.switch.ch/videos/f2fba649;https://tube.switch.ch/videos/231b56f4;https://tube.switch.ch/videos/d3a11675;https://tube.switch.ch/videos/7943b704,,,"* Add the files you can download from the homework page to QGIS (note: the projection epsg is in the filename) 
+  * background_4326.tif
+  * cities_2056.csv
+  * lakes_3857.gpkg
+* Style as you like
+* Send me a screenshot",,,08.10.24
 09.10.24,3,Making Maps,Selection;Styling;Basemaps;Print Composer;, , , , ,,,, ,,,
 16.10.24,4,Georeferencing,Georeferencing;Digitising;, , , , ,,,, ,,,
 23.10.24,5,Handling Spatial Data ,Manipulation of Vector Data;Extraction from Raster;Thematic Map, , , , ,,,, ,,,
