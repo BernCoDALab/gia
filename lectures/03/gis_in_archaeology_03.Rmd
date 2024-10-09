@@ -374,15 +374,15 @@ class: inverse, middle, center
 .tiny[
 You might find the course material (including the presentations) at
 
-https://github.com/MartinHinz/gia_hs_2020
+https://github.com/BernCoDALab/gia
 
 You can see the rendered presentations at
 
-http://martinhinz.github.io/gia_hs_2020
+https://berncodalab.github.io/gia
 
 You can contact me at
 
-<a href="mailto:martin.hinz@iaw.unibe.ch">martin.hinz@iaw.unibe.ch</a>
+<a href="mailto:martin.hinz@unibe.ch">martin.hinz@unibe.ch</a>
 ]
 ]
 ]
