@@ -21,7 +21,12 @@ date,session_nr,title,topics,slides,slides_pdf,reading,video,lab_video,data,inst
 16.10.24,4,Georeferencing,Georeferencing;Digitising;,gis_in_archaeology_04,gis_in_archaeology_04, , ,https://tube.switch.ch/videos/ced6a6f9; https://tube.switch.ch/videos/51fb9bf6,,,"* Select an arbitrary map from archaeological literature (individual burial ground to europe wide mapping).
 * Digitise the information (point or polygon)
 * Send me the resulting shapefile/geopackage and the (georeferenced) original map.",,,23.10.24
-23.10.24,5,Handling Spatial Data ,Manipulation of Vector Data;Extraction from Raster;Thematic Map, , , , ,,,, ,,,
+23.10.24,5,Handling Spatial Data ,Manipulation of Vector Data;Extraction from Raster;Thematic Map,gis_in_archaeology_05,gis_in_archaeology_05, , ,https://tube.switch.ch/videos/b9e4173e; https://tube.switch.ch/videos/b2c29aad; https://tube.switch.ch/videos/efd0a4ca; https://tube.switch.ch/videos/6e10de34; https://tube.switch.ch/videos/82519690; https://tube.switch.ch/videos/718254c1,,,"* Get the north and the south part of the Kanton of Bern
+* Unite them to get a map of the whole Kanton
+* Get the Location of archaeological sites of the Kanton of Bern
+* Count the number of sites in each 'Amtsbezirk'
+* Make a Map showing the number of sites color coded
+* Send me the map",,,
 30.10.24,6,Densities,more Thematic Maps;Heatmap;Point Pattern Analysis, , , , ,,,, ,,,
 06.11.24,7,Interpolation,Interpolation Basics;Gridding;Thiessen Polygons;Nearest Neighbor Interpolation;TIN;IDW;Contours, , , , ,,,, ,,,
 13.11.24,,*no class*, , , , , ,,,, ,,,
