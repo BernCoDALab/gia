@@ -59,7 +59,7 @@ You can download a [pdf of this presentation](gis_in_archaeology07.pdf).
 ---
 <!-- opening shapefile -->
 ## Let's Get Started
-1. [Click this link](data/neolithic_expansion.zip) and download 14C dates for the expansion of the Neolithic
+1. [Click this link](https://github.com/BernCoDALab/gia/raw/main/lectures/07/data/neolithic_expansion.zip) and download 14C dates for the expansion of the Neolithic
 2. Open QGIS
 3. Start a new project and Add the layer
 4. Add a Background Layer to know where we are...
@@ -407,7 +407,7 @@ Now you should see the interpolation enhanced with contour lines, that make it e
 
 ## Homework
 
-+ Get the [archaeological sites of the Kanton bern](data/fundstellen_mit_hoehen.zip) with elevation (field: altitude1)
++ Get the [archaeological sites of the Kanton bern](https://github.com/BernCoDALab/gia/raw/main/lectures/07/data/fundstellen_mit_hoehen.zip) with elevation (field: altitude1)
 + try out different interpolation algorithms
 + Which algorithm gives the best result for interpolation of elevation?
 + Send me your assessement and the best result via email (martin.hinz@iaw.unibe.ch) as screenshot or exported map
