@@ -30,9 +30,12 @@ date,session_nr,title,topics,slides,slides_pdf,reading,video,lab_video,data,inst
 30.10.24,6,Densities,Reprojection;Heatmap;Point Pattern Analysis,gis_in_archaeology_06,gis_in_archaeology_06, , , https://tube.switch.ch/videos/718254c1; https://tube.switch.ch/videos/94a4f92e; https://tube.switch.ch/videos/ac38e22c; https://tube.switch.ch/videos/b4429bcb,,,"* Select a arbitray point layer (the more archaeological the better) 
 * Make a heatmap 
 * Conduct a Nearest Neighbor Analysis 
-* Send me the shapefile of the points, a map of the resulting heatmap and the result of the Nearest Neighbor Analysis",,,13.10.24
+* Send me the shapefile of the points, a map of the resulting heatmap and the result of the Nearest Neighbor Analysis",,,13.11.24
 06.11.24,,*no class*, , , , , ,,,, ,,,
-13.11.24,7,Interpolation,Interpolation Basics;Gridding;Thiessen Polygons;Nearest Neighbor Interpolation;TIN;IDW;Contours, , , , ,,,, ,,,
+13.11.24,7,Interpolation,Interpolation Basics;Gridding;Thiessen Polygons;Nearest Neighbor Interpolation;TIN;IDW;Contours,gis_in_archaeology_07,gis_in_archaeology_07, , ,https://tube.switch.ch/videos/qq0tPFePRZ; https://tube.switch.ch/videos/h3h5uD7T8G; https://tube.switch.ch/videos/WFSXPVfzVF; https://tube.switch.ch/videos/ooydM4SNwV; https://tube.switch.ch/videos/pR5YTEPtUe; https://tube.switch.ch/videos/zE3ML9Mdy9,,,"* Get the archaeological sites of the Kanton bern with elevation (field: altitude1)
+* try out different interpolation algorithms
+* Which algorithm gives the best result for interpolation of elevation?
+* Send me your assessement and the best result via email (martin.hinz@iaw.unibe.ch) as screenshot or exported map",,,20.11.24
 20.11.24,8,Making nicer Maps,Basemap advanced;Basemap from Scratch;Hillshading;Overview Map, , , , ,,,, ,,,
 27.11.24,9,Terrain Data,DEM Basics;Raster Manipulation;Slope;Aspect;TPI;Landforms;Terrain Analysis, , , , ,,,, ,,,
 04.12.24,10,Least Cost Path Analysis,LCP Basics;Cost functions;Dijkstra;Iso/anistropic;Walking Distance, , , , ,,,, ,,,
