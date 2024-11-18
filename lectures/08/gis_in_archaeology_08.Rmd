@@ -102,14 +102,14 @@ library(magrittr)
 .pull-left[
 TonerBackground
 ```{r echo=FALSE}
-leaflet() %>% addProviderTiles("Stamen.TonerBackground") %>% setView(7.5, 47, zoom = 8)
+leaflet() %>% addProviderTiles("Stadia.StamenTonerBackground") %>% setView(7.5, 47, zoom = 8)
 ```
 ]
 
 .pull-right[
 TerrainBackground
 ```{r echo=FALSE}
-leaflet() %>% addProviderTiles("Stamen.TerrainBackground") %>% setView(7.5, 47, zoom = 8)
+leaflet() %>% addProviderTiles("Stadia.StamenTerrainBackground") %>% setView(7.5, 47, zoom = 8)
 ```
 ]
 ---
