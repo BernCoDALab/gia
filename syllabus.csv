@@ -36,7 +36,7 @@ date,session_nr,title,topics,slides,slides_pdf,reading,video,lab_video,data,inst
 * try out different interpolation algorithms
 * Which algorithm gives the best result for interpolation of elevation?
 * Send me your assessement and the best result via email (martin.hinz@iaw.unibe.ch) as screenshot or exported map",,,20.11.24
-20.11.24,8,Making nicer Maps,Basemap advanced;Basemap from Scratch;Hillshading;Overview Map, , , , ,,,, ,,,
+20.11.24,8,Making nicer Maps,Basemap advanced;Basemap from Scratch;Hillshading;Overview Map,gis_in_archaeology_08,gis_in_archaeology_08, , ,,,,No Homework,,,
 27.11.24,9,Terrain Data,DEM Basics;Raster Manipulation;Slope;Aspect;TPI;Landforms;Terrain Analysis, , , , ,,,, ,,,
 04.12.24,10,Least Cost Path Analysis,LCP Basics;Cost functions;Dijkstra;Iso/anistropic;Walking Distance, , , , ,,,, ,,,
 11.12.24,11,Site Catchment Analysis,Least Cost Corridors;SCA Background;Data Extraction, , , , ,,,, ,,,
