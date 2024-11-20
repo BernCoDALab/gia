@@ -202,11 +202,11 @@ large scale:
 .pull-right[
 small scale:
 * depends on your region and scale
-* [CCM River and Catchment Database, version 2.1 (CCM2)](https://ccm.jrc.ec.europa.eu/php/index.php?action=view&id=24) for Europe
+* [CCM River and Catchment Database, version 2.1 (CCM2)](https://joint-research-centre.ec.europa.eu/scientific-tools-databases/catchment-characterisation-and-modelling-ccm_en) for Europe
 ]
 
 ![:width 48%](images/ned_rivers.png) ![:width 48%](images/ccm2.png)
-.caption[Source: https://www.naturalearthdata.com; https://ccm.jrc.ec.europa.eu]
+.caption[Source: https://www.naturalearthdata.com; https://joint-research-centre.ec.europa.eu]
 
 ---
 ## Mountains -> DEM (Digital Elevation Model)
