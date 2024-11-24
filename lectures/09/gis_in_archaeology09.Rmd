@@ -1,0 +1,447 @@
+---
+title: "GIS in Archaeology"
+subtitle: "09 - Terrain Data"
+author: "Martin Hinz"
+institute: "Institut für Archäologische Wissenschaften, Universität Bern"
+fontsize: 9pt
+date: "27/11/24"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    chakra: "../../libs/remark-latest.min.js"
+    css: ["../../libs/default.css", "../../libs/default-fonts.css", "../../libs/customize.css"]
+    lib_dir: "libs"
+    seal: false
+    nature:
+      beforeInit: "../../libs/macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      fig_caption: yes
+      ratio: "16:10"
+---
+class: title-slide, center, middle
+```{r, echo = FALSE}
+# https://stackoverflow.com/questions/25646333/code-chunk-font-size-in-rmarkdown-with-knitr-and-latex
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('# ', rmarkdown::metadata$title)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('## ', rmarkdown::metadata$subtitle)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('### ', rmarkdown::metadata$author)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('#### ', rmarkdown::metadata$institute)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat(rmarkdown::metadata$date)
+```
+.footnote[
+.right[
+.tiny[
+You can download a [pdf of this presentation](gis_in_archaeology_09.pdf).
+]
+]
+]
+---
+## Terrain
+
+.pull-left[
+![:width 80%](images/photo-1469135762633-c299d101636a.jpg)
+![:width 80%](images/photo-1483699862560-f524a8c11c6c.jpg)
+]
+.pull-right[
+![:width 88%](images/photo-1486393658811-7168187b08b7.jpg)
+]
+.caption[
+Photos by Martin Sattler, Matt Nelson, Pierpaolo Lanfrancotti on Unsplash
+]
+
+---
+## Terrain
+.pull-left[
+### What is terrain
+
+> *An area of land, when considering its natural features. - Cambridge Dictionary*
+
+* Continually varying surface
+  * What varies (for us) is elevation
+  
+### What is terrain analysis
+
+* calculating from the elevations and their spatial structure derived informations
+  * Slope
+  * Aspect
+  * Curvature
+  * Land forms
+  * Cost Surfaces
+  * Visibility
+  * ...
+]
+
+.pull-right[
+![:width 74%](images/photo-1502866088342-cc132593eea7.jpg)
+![:width 80%](images/2017-01-15-measuring-08_25_34-.png)
+.caption[
+sources: Photo by Kasuma F. Gruber on Unsplash; https://digital-geography.com]
+]
+
+---
+## DEM (Digital Elevation Model)
+
+.pull-left[
+* DEM: a computer based representation of the terrain as elevation data 
+* Mostly available as raster data, sometimes as TIN
+* large scale: Mostly from remote (satellite) data
+* small scale: areal photography or measurements, or even ground based surveys
+* methods
+  * Radar
+  * LiDAR
+  * Structure from motion
+  * ...
+  
+]
+
+.pull-right[
+![:width 50%](../08/images/spotview.gif)![:width 50%](../08/images/GUID-6D12B139-0878-494D-ABC4-01C0250FB757-web.png)
+.caption[Sources: https://crisp.nus.edu.sg; https://desktop.arcgis.com]
+]
+
+DEM can come in EPSG 4326 (WGS 84 lat/lng).
+
+Then might be necessary to reproject the DEM to a projected (meter based) CRS. We cover this in the next session...
+
+---
+## DEM Sources
+
+.pull-left[
+* depends on your region and scale
+* GMTED2010 (https://topotools.cr.usgs.gov/gmted_viewer/viewer.htm) 7.5 arc second resolution (~ 225 m along the equator)
+* SRTM (e.g. http://dwtkns.com/srtm) 3 arc second resolution (~ 90 meters along the equator)
+* ASTER (e.g. https://search.earthdata.nasa.gov/) 3 arc second resolution (~ 30 meters along the equator)
+* TanDEM-X (90 m after registration, 12 m only with project submission)
+* LiDAR
+]
+
+.pull-right[
+.right[
+![:width 80%](images/Digital_elevation_model_Bachu_China_pillars.jpg)
+]
+.caption[Digital elevation model Bachu, China. Source: https://www.esa.int]
+]
+---
+## Lets get some DEM
+
+* Go to http://dwtkns.com/srtm to get some SRTM data of a location of the world of your choice
+* Click on one of the tiles
+* Click on 'Download GeoTIFF'
+* Wait till it has finished and open it in QGIS
+* Check what CRS it comes in (remember?)
+
+.pull-right[
+.right[
+![:width 80%](images/reproject_raster01.png)
+]
+]
+---
+## Reproject Raster
+
+.pull-left[
+* the SRTM Tile comes in EPSG 4236 (WGS 84 Lat/Lng), which is degree based and unprojected
+* to work with the DEM, we have to reproject it to a meter based projection system
+* (Raster Reprojection always comes with smoothing/blurring data and loss of precision!)
+* which to choose depends on the location you have choosen to download
+* a good choice for projected CRS is Universal Transverse Mercator (UTM)
+* for the GIS Projection, you need to know
+  * the number of the Zone you are in
+  * if you are north or south of the Equator
+]
+
+.pull-right[
+![](images/1920px-Utm-zones.jpg)
+]
+---
+## Reproject to UTM using QGIS
+
+* I selected the SRTM tile around Switzerland
+* With that, I am at 32 N(orth)
+* Go to 'Raster > Projection > Transform (Reproject)'
+* Select your input Raster and CRS
+* Select your output CRS
+  * search for in my case "utm 32N"
+  * select the WGS 84 variant
+* click on 'Run'
+* Save your new Raster
+
+.center[
+![:width 48%](images/reproject_raster02.png) ![:width 48%](images/reproject_raster03.png)
+]
+
+---
+## Slope
+
+.pull-left[
+* Identifies the slope (gradient, or rate of maximum change in z-value) from each cell of a raster surface.
+* can be given in degree or in percentage
+
+> *Conceptually, the tool **fits a plane to the z-values of a 3 x 3 cell neighborhood** around the processing or center cell. The slope value of this plane is calculated ... The lower the slope value, the flatter the terrain - ArcGIS*
+]
+
+.pull-right[
+![](images/GUID-64B478F2-045A-4DDD-9E0E-5757B9098B1B-web.gif) ![](images/GUID-C5E959E6-B10A-4F96-92EE-DD1E4EF0E4CE-web.png)
+.caption[Source: https://desktop.arcgis.com]
+]
+---
+## Calculating Slope in QGIS
+
+* Go to 'Raster > Analysis > Slope'
+* You could select to calculate percent instead of degree
+* usually you do not need to change anything
+* Click Run
+
+.center[
+![:width 48%](images/slope01.png) ![:width 48%](images/slope02.png)
+]
+---
+## Calculating Slope Result
+
+* The resulting slopes range between 0 and 74°
+* You can change the symbology of the layer
+* a good choice might be the inverse spectral color ramp
+* archaeological significance:
+  * flatter areas are better suited for building and agriculture
+
+.center[
+![:width 48%](images/slope03.png) ![:width 48%](images/slope04.png)
+]
+---
+## Aspect
+
+.pull-left[
+* The aspect of terrain refers to the direction it’s facing in
+* The pixels will have a value from 0-360° measured in degress from north indicating the azimuth
+* Flat areas having no downslope direction are given a value of 9999.
+
+> *Also here, the tool **fits a plane to the z-values of a 3 x 3 cell neighborhood** around the processing or center cell. Then the direction is calculated in which the plane is facing.*
+]
+
+.pull-right[
+![](images/GUID-A3590481-6E96-4BD8-BF50-25093FD55F00-web.gif) ![:width 70%](images/GUID-8A2021F8-6D40-4EDA-B677-4C376C6DC246-web.png)
+
+![:width 70%](images/GUID-31D00098-3346-46B2-A7E6-DAB0E0EBDF10-web.png)
+
+.caption[Source: https://desktop.arcgis.com]
+]
+---
+## Calculating Aspect in QGIS
+
+* Go to 'Raster > Analysis > Aspect' (Perspektive)
+* You could select to calculate the trigonometric angle (n, e, s, w)
+* usually you do not need to change anything
+* Click Run
+
+.center[
+![:width 48%](images/aspect01.png) ![:width 48%](images/aspect02.png)
+]
+
+---
+## Calculating Aspect Result
+
+* The resulting angles range between 0 and 359.9999°
+* You can change the symbology of the layer
+* a good choice might be again the spectral color ramp
+* archaeological significance:
+  * south-facing areas (on northern hemisphere) get more sun, maybe more likely for agriculture?
+
+.center[
+![:width 48%](images/aspect03.png) ![:width 48%](images/aspect04.png)
+]
+
+---
+## TPI
+.pull-left[
+* Topographic Position Index (TPI) is defined as the difference between the elevation at a cell and the average elevation in a cell that surrounds it within a predetermined radius (Weiss, 2001)
+* TPI values **above zero** show locations that are **higher** than the average, e.g. ridges
+* **negative TPI** values represent locations that are **lower** e.g. valleys
+* TPI **values near zero** are either **flat** areas **or** areas of **constant slope**
+]
+
+.pull-right[
+![](images/The-Topographic-Position-Index-Definition-after-3.png)
+]
+
+---
+## Calculating TPI in QGIS
+
+* Go to 'Raster > Analysis > Topographical Position (TPI)'
+* you actually can't change anything here
+* Click Run
+
+.center[
+![:width 48%](images/tpi01.png) ![:width 48%](images/tpi02.png)
+]
+
+---
+## Calculating TPI Result
+
+* The resulting angles range between ~ +/- 350 m
+* You can change the symbology of the layer
+* a good choice might be again the spectral color ramp
+* archaeological significance:
+  * ridges and peaks provide better control over areas: maybe preferred settlemen locations
+
+.center[
+![:width 48%](images/tpi03.png) ![:width 48%](images/tpi04.png)
+]
+
+---
+## Landforms
+
+.pull-left[
+* significance of the TPI depends strongly on size of the neighborhood
+* comining TPI from different neighborhood sizes reveals more 'natural' land form structures
+]
+
+.pull-right[
+.right[
+![](images/tpi_ex01.png)
+![](images/tpi_ex02.png)
+
+]
+
+]
+![:width 50%](images/tpi_ex03.png)
+.caption[Source: http://www.jennessent.com]
+
+---
+## Calculating Landforms in QGIS
+
+* Not available from the menue
+* Open the Toolbox ![](images/toolbox_icon.png)
+* Start typing 'landform', find 'Tpi based landform classification'
+* Open the tool
+* select the correct layer
+* you can define the radii, 100 m does not make too much sense with our resolution...
+* you could also define a weighting according to distance and related parameters
+* **Do not now click on Run** ...this might take a while...
+
+.center[
+![:width 48%](images/landforms01.png) ![:width 48%](images/landforms02.png)
+]
+
+---
+## Calculating Landforms Result
+.pull-left[
+* The calculation might take quite a while
+* the result is a raster with up to 10 classes:
+* a good choice might be to [download this style](data/TPIbasedLandforms.qml) and use it
+* archaeological significance:
+  * different classes of landscape attracts different usage
+]
+
+.pull-right[
+1. Canyons, deeply incised streams
+2. Midslope drainages, shallow valleys
+3. Upland drainages, headwaters
+4. U-shaped valleys
+5. Plains
+6. Open slopes
+7. Upper slopes, mesas
+8. Local ridges/hills in valleys
+9. Midslope ridges, small hills in plains
+10. Mountain tops, high ridges
+]
+
+.center[
+![:width 43%](images/landforms03.png) ![:width 43%](images/landforms04.png)
+]
+
+---
+## 'Basic Terrain Analysis'
+
+* for Landforms, we actually were using another GIS within QGIS: SAGA GIS
+* SAGA is a very good tool for morphometric (Terrain) Analysis
+* It offers eg. a small tool that achieve all of the above and much more. It is called 'Basic terrain analysis'
+* You might like to try it out
+
+.center[
+![:width 43%](images/basic_terrain01.png) ![:width 43%](images/basic_terrain02.png)
+]
+---
+
+# What We've Covered
+--
+
++ Basics of Terrain Analysis
+--
+
++ Slope
+--
+
++ Aspect
+--
+
++ TPI
+--
+
++ Landforms
+
+
+---
+## More Terrain Analysis using SAGA
+
+.pull-left[
+Olaya, V. (2004): A Gentle Introduction to SAGA GIS.
+http://downloads.sourceforge.net/saga-gis/SagaManual.pdf
+]
+
+.pull-right[
+![:width 90%](images/1402459962.png)
+]
+
+---
+
+## Homework
+
+* Get the SRTM data from Ireland
+* calculate the TPI
+* send me a screen shot
+
+---
+class: inverse, middle, center
+# Any questions?
+
+![:width 20%](images/1*mYaHTbioZgltE6g7-btVGA.jpg)
+
+.caption[Source: https://www.instagram.com/sadtopographies]
+
+.footnote[
+.right[
+.tiny[
+You might find the course material (including the presentations) at
+
+https://github.com/BernCoDALab/gia
+
+You can see the rendered presentations at
+
+https://berncodalab.github.io/gia
+
+You can contact me at
+
+<a href="mailto:martin.hinz@unibe.ch">martin.hinz@unibe.ch</a>
+]
+]
+]
