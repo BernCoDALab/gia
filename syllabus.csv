@@ -37,7 +37,9 @@ date,session_nr,title,topics,slides,slides_pdf,reading,video,lab_video,data,inst
 * Which algorithm gives the best result for interpolation of elevation?
 * Send me your assessement and the best result via email (martin.hinz@iaw.unibe.ch) as screenshot or exported map",,,20.11.24
 20.11.24,8,Making nicer Maps,Basemap advanced;Basemap from Scratch;Hillshading;Overview Map,gis_in_archaeology_08,gis_in_archaeology_08, , ,https://tube.switch.ch/videos/52650b8c; https://tube.switch.ch/videos/798f310f; https://tube.switch.ch/videos/27e22e98,,,No Homework,,,
-27.11.24,9,Terrain Data,DEM Basics;Raster Manipulation;Slope;Aspect;TPI;Landforms;Terrain Analysis, , , , ,,,, ,,,
+27.11.24,9,Terrain Data,DEM Basics;Raster Manipulation;Slope;Aspect;TPI;Landforms;Terrain Analysis,gis_in_archaeology_09,gis_in_archaeology_09, , ,https://tube.switch.ch/videos/4Xm15rGk0o; https://tube.switch.ch/videos/HxcZESM7Oa; https://tube.switch.ch/videos/jm1tv0K5Lx; https://tube.switch.ch/videos/GmLf7BIFib; https://tube.switch.ch/videos/G6T3ah9MCW,,,"* Get the SRTM data from Ireland
+* calculate the TPI
+* send me a screen shot",,,04.12.24
 04.12.24,10,Least Cost Path Analysis,LCP Basics;Cost functions;Dijkstra;Iso/anistropic;Walking Distance, , , , ,,,, ,,,
 11.12.24,11,Site Catchment Analysis,Least Cost Corridors;SCA Background;Data Extraction, , , , ,,,, ,,,
 18.12.24,12,Visibility Analysis ,Visibility Analysis Basics;Viewshed;Intervisibility;Cumulative Viewshed;Intervisibility Network;Total Viewshed, , , , ,,,, ,,,
