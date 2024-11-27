@@ -347,7 +347,7 @@ Then might be necessary to reproject the DEM to a projected (meter based) CRS. W
 .pull-left[
 * The calculation might take quite a while
 * the result is a raster with up to 10 classes:
-* a good choice might be to [download this style](data/TPIbasedLandforms.qml) and use it
+* a good choice might be to [download this style](https://github.com/BernCoDALab/gia/raw/main/lectures/09/data/TPIbasedLandforms.qml) and use it
 * archaeological significance:
   * different classes of landscape attracts different usage
 ]
