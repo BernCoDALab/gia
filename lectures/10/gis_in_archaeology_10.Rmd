@@ -1,0 +1,516 @@
+---
+title: "GIS in Archaeology"
+subtitle: "10 - Least Cost Path Analysis"
+author: "Martin Hinz"
+institute: "Institut für Archäologische Wissenschaften, Universität Bern"
+fontsize: 9pt
+date: "04/12/24"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    chakra: "../../libs/remark-latest.min.js"
+    css: ["../../libs/default.css", "../../libs/default-fonts.css", "../../libs/customize.css"]
+    lib_dir: "libs"
+    seal: false
+    nature:
+      beforeInit: "../../libs/macros.js"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      fig_caption: yes
+      ratio: "16:10"
+---
+class: title-slide, center, middle
+```{r, echo = FALSE}
+# https://stackoverflow.com/questions/25646333/code-chunk-font-size-in-rmarkdown-with-knitr-and-latex
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('# ', rmarkdown::metadata$title)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('## ', rmarkdown::metadata$subtitle)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('### ', rmarkdown::metadata$author)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat('#### ', rmarkdown::metadata$institute)
+```
+
+```{r, echo = FALSE, results="asis"}
+cat(rmarkdown::metadata$date)
+```
+
+.footnote[
+.right[
+.tiny[
+You can download a [pdf of this presentation](gis_in_archaeology_10.pdf).
+]
+]
+]
+---
+## What is it good for?
+
+* Reconstruction of pathways
+* Estimation of cost distances
+* Estimation of interaction potential
+* Archaeoprognosis
+* Identification of factors that determine the course of known pathways
+* Relative dating of sites
+* Identification of central places
+* Heritage Management: Modern road planning to minimise the impact on the perception of archaeological monuments.
+
+---
+## What is it good for?
+
+The basic principle of least-cost-path analysis to determine optimal routes or interaction corridors (according to Surface-Evans/White 2012, 3 Fig. 1)
+
+![](images/basic_least_cost.png)
+
+On the left: Movement through a geographical space from the starting point (A) to the destination (Z), which is determined by cells with equal costs (cost = 5).
+Right: Movement through a geographical space from the point of origin (A) to the destination (Z) determined by cells with different costs.
+---
+## What we need
+
+* Data = e.g. digital terrain model, (find) points, vector data
+
+* Costs = e.g. relief, vegetation, water, social and cultural aspects
+
+* Cost functions = translation of benefits and obstacles to mobility into "locomotion effort" (energy consumption, speed, etc.)
+
+* LCP algorithms = e.g. pathfinding algorithm through the cost grid
+
+---
+## Data
+
+* a DEM
+  * maybe a SRTM from https://dwtkns.com/srtm/
+  * I suggest taking Switzerland
+  * If you can not download from this source, you might try this link to ESA for the [tile of switzerland](https://step.esa.int/auxdata/dem/SRTM90/tiff/srtm_38_03.zip).
+* A start point
+  * I suggest taking Bern
+* A End Point
+  * I suggest taking Basel
+---
+## Data Preparation (1)
+
+We need a start and endpoint to calculate the path in individual layers.
+
+* Start QGIS
+* Add a basemap for reference (eg. Positron)
+* create a new Vector point layer and call it 'start'
+  * select storage location, geometry type point and CRS 2056
+* add a point at Bern
+* create a new Vector point layer and call it 'end' equivivalen to the start layer
+* add a point at Basel
+* Zoom in so that you can just see Basel and Bern
+
+.center[
+![:width 48%](images/add_shape_layer01.png) ![:width 48%](images/add_shape_layer02.png)
+]
+---
+## Data Preparation (2)
+
+We reduce the amount of data to be processed to speed things up.
+
+* Download the tile
+* Add the tile to QGIS
+* Reproject the tile to epsg 2056
+* Click on 'Raster > Extraction > Crop Raster to Extend'
+* Select the Reprojected Raster
+* Select Crop Extend from Map Extend
+
+.center[
+![:width 48%](images/prepare_raster01.png) ![:width 48%](images/prepare_raster02.png)
+]
+
+You now can turn of all layers except your cropped DEM and the start and endpoint.
+---
+## Quick and Dirty Least Cost Path
+
+For a simple Least Cost Path, we use a plugin
+
+* Open the Extension Manager
+* Search for the Plugin 'Least Cost Path'
+* Install
+
+.center[
+![:width 48%](images/install_plugin_01.png) ![:width 48%](images/install_plugin_02.png)
+]
+
+---
+## Costs and Cost Grid
+
+We are looking for the fastest path. Remember:
+
+.center[
+![:width 80%](images/basic_least_cost.png)
+]
+
+* On a plain, the fastest path is a straight line between to points
+* In a terrain, the fastest path depends on the terrain
+* If we ignore surface quality, it is dependend on slope
+
+---
+## Cost functions in respect to Slope
+
+### 'Ox cart function' according to Herzog 2012
+$f(s)=1+(s/c)²$
+
+s = Slope in percent; c = critical slope = 10 bis 12 %
+
+### Energy consumption function for pedestrians according to Herzog 2012
+
+$f(s) = 1337,8s^6+278,19s^5-517,39s^4-78,199s^3+93,419s²+19,825s+1,64$
+
+s = Slope in percentage / 100
+
+### Inverse speed function for pedestrians according to Tobler 1993
+
+$f(s; Tobler away)= 1/(6 ^{-3,5*abs (S + 0,05)})$
+
+$f(s; Tobler towards)=1/(6 ^{-3,5*abs (S – 0,05)})$
+
+$f (s; Tobler Mittelwert)=(f (s;Tobler away)+f (s; Tobler towards))/2$
+---
+## Cost functions in respect to Slope
+### Why does in matter?
+.pull-left[
+* Different modes of transport are differently susceptible to slope
+* Different Functions produce different costs dependend on the slope
+* In the large scale, this can influence your results dramaticaly
+* There is a whole body of literature on this topic...
+]
+
+.pull-right[
+![:width 90%](images/slope_functions.png)
+.caption[Herzog 2014]
+]
+---
+## Cost functions in respect to Slope
+
+### Intimitated?
+
+* We use the simple ox cart function
+* Consider using a more complicated function 
+
+### First: Calculate Slope
+
+* You still now how from last week?
+* **We will need percentage!**
+
+.center[
+![:width 48%](images/calc_slope01.png) ![:width 48%](images/calc_slope02.png)
+]
+---
+## Calculating Costs from Slope
+
+.pull-left[
+* We use the Raster Calculator of QGIS
+* We just plugin the ox cart function like below:
+
+$f(s)=1+(s/c)²$
+
+1+(Slope/12)^2
+
+![](images/raster_calc_01.png)
+
+]
+.pull-right[
+ ![](images/raster_calc_02.png)
+]
+
+---
+## Lets calculate!
+
+* Open the Toolbox ![](../09/images/toolbox_icon.png)
+* Search for 'least cost'
+* Select the 'Least Cost Path' tool from 'Cost Distance Analysis'
+  * **Do not choose the SAGA tool, it works differently**
+* Select input cost layer, start and end point layer
+* Click on 'Run' (this takes a while)
+
+.center[
+![:width 35%](images/lcp_plugin01.png) ![:width 55%](images/lcp_plugin02.png)
+]
+
+---
+## Result
+
+* Turn all layers of except the points, the least cost path line and the basemap
+* Compare the resulting Least Cost Path with the road network
+  * On the plain, the LCP is more straight than the road
+  * In the Hills, Road and LCP are more or less identical
+* The more defined the terrain is, the more the least cost path is determined by it
+
+.center[
+![:width 48%](images/lcp_result01.png) ![:width 48%](images/lcp_result02.png)
+]
+
+---
+## Dijkstra-Algorithm
+> The basic idea of the algorithm is to always follow the edge that promises the shortest route section from the start node. Other edges are only followed if all shorter route sections (also beyond other nodes) have been considered. This procedure ensures that when a node is reached, no shorter path to it can exist. - wikipedia
+
+.pull-left[
+1. find the most cost-effective step from the starting point
+2. note the cost and mark the destination of the step.
+3. find the cheapest step from a visited cell adjacent to an unused cell
+4. note the costs and the starting point of the step and the destination
+5. repeat 3 and 4 until the target point is reached.
+6. reconstruct the best route by stringing together the best connections from the destination to the starting point.(after Oliver Nakoinz)
+]
+
+.pull-right[
+![](https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif)
+]
+
+---
+## Some Movement Directions
+
+More possible directions -> more precise results, but also more computational time
+
+![](images/movement_directions.png)
+
+---
+## Isotropic vs. anisotropic Analysis
+
+.pull-left[
+* Costs are calculated per cell
+* if you move along a slope, you actually walk on an even elevation
+* if the movement direction is not considered, it is isotropic
+* if they are taken into account, it is anisotropic
+  * more accurate, but more calculation intensive
+  * travel direction matters: The path from a -> b can be different than the path from b->a
+
+The cost raster is isotropic, the plugin uses Dijkstra and Manhattan (Neumann) Neighborhood. There is a way independent from the plugin using SAGA, but we will not cover this here...
+
+]
+
+.pull-right[
+![:width 50%](images/traverse.png)
+![](images/isotropic_vs_anisogropic.jpg)
+.caption[Source: David Lewis; Ray/Ebener 2009
+]
+]
+---
+## Calculating walking time from a given start point
+
+### If you want to know, which points can be reached in what or a given time
+
+.pull-left[
+
+* calculates the walking time in any direction
+* if a maximum time is given, it is possible to determine the area reachable within this time
+* can be used to estimate a territory used by a settlement
+* can be based on terrain and other cost changing aspects (roads, barriers)
+
+.center[
+![:width 48%](images/Cost-Time-1.jpg)
+.caption[Comparison between 5 hour isochrones, with and without slope. Source: http://www.chrismapsthepast.com]
+]
+]
+
+.pull-right[
+![:width 48%](images/extent_model_example.png)
+.caption[Comparison between a Thiessen-Polygon and an Cost-Defined (XTENT) model of the territories of the Maya lowland. Source: Ducke/Kroefges 2007]
+]
+---
+## Calculating in QGIS - Prerequisists
+
+.pull-left[
+We need to utilize another GIS inside QGIS: GRASS.
+* There is a function r.walk that calculates walking time.
+* You can parameterise it for different Walking Cost functions, we work with the default (although it might be not optimal)
+* It expects a start point, an elevation model and a 'friction cost' layer
+  * With the friction cost you can introduce other costs beside the slope
+  * **This is not the cost layer we just calculated**
+  * To make our walking time only dependend on the slope, have to define a neutral raster layer containing only zeros (0)
+  * We can use the raster calculator for this
+]
+
+.pull-right[
+![](images/grass_logo.png)
+]
+---
+## Creating a empty (zero) layer
+
+.pull-left[
+* Start the raster calculator
+* Select the Slope layer as template
+* Write '0' in the 'Expression' pane
+* Specify the output file, name it eg. 'cost0'
+* Click on OK
+
+![](images/raster_calc_01.png)
+]
+
+.pull-right[
+ ![](images/calc_0_raster01.png)
+]
+---
+## Calculating in QGIS - Actual Calculation
+
+.pull-left[
+* Open the Toolbox ![](../09/images/toolbox_icon.png)
+* Search for 'r.walk' and open the 'r.walk.points' tool
+* Select DEM, cost0 and start layer
+* [you could define a stop point, where the maximum costs will be reached]
+* [you also can define the formula for the walking function. It defaults to Langmuir]
+* [in the advanced settings, you can specify using 'Kings move', it defaults to Manhattan move]
+* Click on Run
+
+.center[
+![:width 50%](images/rwalk01.png) 
+]]
+
+.pull-right[
+![](images/rwalk02.png)
+]
+---
+## r.walk results
+
+You get two resulting layers:
+* Movement directions contains the movement choosen for the calculation at each raster cell
+* More relevant is 'Cumulative Costs'
+  * Here, the raster holds the walking time to the pixel cell from the start point measured in seconds
+  * You can color this using pseudocolor, spectral, inverse
+
+.center[
+![:width 48%](images/rwalk_results01.png) ![:width 48%](images/rwalk_results02.png)
+.caption[left: movement directions; right: cumulative movement costs, colored with pseudocolor spectra, inverse]
+]
+---
+## Calculate the movement distance within a given time
+
+To get how far a pedestrian can walk in a given time, we can use the Contour tool, this time from SAGA:
+
+* here we can set maximum and minimum value for the contour line
+* the walking time is in seconds, so eg. 4 hours is equivalent with 4 x 60 x 60 = 14400 seconds
+
+.pull-left[
+
+* search for 'contour' in the Toolbox ![:width 5%](../09/images/toolbox_icon.png)
+* Click on 'Contour lines' tool from SAGA
+* Set 'Cumulative Costs' as layer
+* Set x,y as 'Support point type'
+* Set maximum and minimum to 14400
+* click on 'Run'
+
+.center[
+![:width 40%](images/contour01.png) 
+]]
+
+.pull-right[
+![](images/contour02.png)
+]
+
+---
+## Walking distance results
+
+* You should get a line showing the extent of a walking time of 5h
+* You can make it stick out more using Symbology (here: neon glow)
+* If you make the actual cost layer invisible, you can compare with the base map
+* In 4 hours I could get eg. to Kirchdorf
+* Compare with Google Maps: between 3h 50 min and 4h 10 min
+* or try it out yourself
+
+.center[
+![:width 48%](images/walking_distance_result01.png) ![:width 48%](images/walking_distance_result02.png)
+.caption[left: movement directions; right: cumulative movement costs, colored with pseudocolor spectra, inverse]
+]
+
+---
+## Outlook
+
+.pull-left[
+* You can use the results from r.walk also for Least Cost Path analysis:
+  * Use the SAGA 'least cost paths' tool
+  * Use the 'Cumulative costs' as input layer and the end (Basel) as source point layer
+* take care for the selection of the right movement function and use kings move if possible
+* you can combine the cumulative costs starting from both points combined to estimate movement corridors using the raster calculator and addition
+![:width 48%](images/outlook01.png)
+.caption[calculating LCP with Cumulative Costs from r.walk and Least Cost Paths tool from SAGA]
+]
+.pull-right[
+.center[
+![:width 90%](images/outlook02.png)
+![:width 90%](images/outlook03.png)
+.caption[top: comparison between LCP from plugin (red) and from r.walk (green);
+bottom: Least Cost Corridor by combining Cumulative Costs starting from both points]
+]
+
+]
+
+
+---
+
+# What We've Covered
+--
+
++ Creating a cost layer from Slope
+--
+
++ Basic Least Cost Path calculation
+--
+
++ Creating a cumulative cost (walking time) layer
+--
+
++ Estimation of walking distance in a given time
+--
+
+---
+## More on Least Cost Path Analysis
+
+.pull-left[
+White, Devin A. and Sarah L Surface-Evans. Least Cost Analysis of Social Landscapes: Archaeological Case Studies. University of Utah Press, 2012. Project MUSE muse.jhu.edu/book/41407.
+
+Free available from within the university network.
+]
+
+.pull-right[
+![:width 90%](images/9781607811718.jpg)
+]
+
+---
+
+# Homework
+
+* Select two locations of your choice (in Switzerland or the world)
+* Calculate the least cost path between them
+* Send me a screenshot
+
+---
+class: inverse, middle, center
+# Any questions?
+
+![:width 20%](images/misery.jpg)
+
+.caption[Source: https://www.instagram.com/sadtopographies]
+
+.footnote[
+.right[
+.tiny[
+You might find the course material (including the presentations) at
+
+https://github.com/BernCoDALab/gia
+
+You can see the rendered presentations at
+
+https://berncodalab.github.io/gia
+
+You can contact me at
+
+<a href="mailto:martin.hinz@unibe.ch">martin.hinz@unibe.ch</a>
+]
+]
+]
