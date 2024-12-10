@@ -61,9 +61,9 @@ You can download a [pdf of this presentation](gis_in_archaeology_11.pdf).
 # Before we start:
 
 You might need to download the following data, if you do not have them on your PC right now:
-* [SRTM DEM of Switzerland in EPSG 2056](data/srtm_2056_cut.tif)
-* The [start point](data/start.zip) as shapefile vector layer
-* The [end point](data/end.zip) as shapefile vector layer
+* [SRTM DEM of Switzerland in EPSG 2056](https://github.com/BernCoDALab/gia/raw/main/lectures/11data/srtm_2056_cut.tif)
+* The [start point](https://github.com/BernCoDALab/gia/raw/main/lectures/11data/start.zip) as shapefile vector layer
+* The [end point](https://github.com/BernCoDALab/gia/raw/main/lectures/11data/end.zip) as shapefile vector layer
 
 ---
 # A small repetition
@@ -412,7 +412,7 @@ To use the walking distance border for extracting informations, we have to trans
 
 Informations like soil types might come as vector (polygon) data. What we like to know is how many area is covered by the specific soil types (or other areas classified by attributes).
 
-Please download the soil [data for switzerland](data/boden_2056.zip) and add them to your map. The dataset is a simplified and reprojected version of what you can download from geo.admin.ch...
+Please download the soil [data for switzerland](https://github.com/BernCoDALab/gia/raw/main/lectures/11/data/boden_2056.zip) and add them to your map. The dataset is a simplified and reprojected version of what you can download from geo.admin.ch...
 
 The layer contains fields (columns) with multiple soil productivity parameters. We will use the 'Eignungsei', containing informations of suitability for different land uses.
 
