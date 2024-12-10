@@ -43,5 +43,9 @@ date,session_nr,title,topics,slides,slides_pdf,reading,video,lab_video,data,inst
 04.12.24,10,Least Cost Path Analysis,LCP Basics;Cost functions;Dijkstra;Iso/anistropic;Walking Distance,gis_in_archaeology_10,gis_in_archaeology_10, , ,https://tube.switch.ch/videos/NDTr0ThOIq; https://tube.switch.ch/videos/dPM2HT72ie; https://tube.switch.ch/videos/Gd8HioHFMX,,,"* Select two locations of your choice (in Switzerland or the world)
 * Calculate the least cost path between them
 * Send me a screenshot",,,11.12.24
-11.12.24,11,Site Catchment Analysis,Least Cost Corridors;SCA Background;Data Extraction, , , , ,,,, ,,,
+11.12.24,11,Site Catchment Analysis,Least Cost Corridors;SCA Background;Data Extraction,gis_in_archaeology_11,gis_in_archaeology_11, , ,https://tube.switch.ch/videos/Xc03lVgZHC; https://tube.switch.ch/videos/s376iVrz9u; https://tube.switch.ch/videos/lSkP2xiPiD; https://tube.switch.ch/videos/Q6IOMMpDJH,,,"*  Select a locations of your choice (in Switzerland or the world)
+* Get the DEM from SRTM
+* Calculate the 1h Catchment
+* Evaluate a parameter of your choice in terms of the percentage of the catchment (slope is probably the easiest…)
+* Send me a screenshot",,,18.12.24
 18.12.24,12,Visibility Analysis ,Visibility Analysis Basics;Viewshed;Intervisibility;Cumulative Viewshed;Intervisibility Network;Total Viewshed, , , , ,,,, ,,,
