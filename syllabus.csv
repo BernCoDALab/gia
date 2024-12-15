@@ -48,7 +48,7 @@ date,session_nr,title,topics,slides,slides_pdf,reading,video,lab_video,data,inst
 * Calculate the 1h Catchment
 * Evaluate a parameter of your choice in terms of the percentage of the catchment (slope is probably the easiest…)
 * Send me a screenshot",,,18.12.24
-18.12.24,12,Visibility Analysis ,Visibility Analysis Basics;Viewshed;Intervisibility;Cumulative Viewshed;Intervisibility Network;Total Viewshed,gis_in_archaeology_12,gis_in_archaeology_12, , ,,,,"* Get a DEM of a location of your choice (tip: make it not too big! And have it in projected coordinate/meter based)
+18.12.24,12,Visibility Analysis ,Visibility Analysis Basics;Viewshed;Intervisibility;Cumulative Viewshed;Intervisibility Network;Total Viewshed,gis_in_archaeology_12,gis_in_archaeology_12, , ,https://tube.switch.ch/videos/77c0qSnsbo; https://tube.switch.ch/videos/gbMvSKWrCC; https://tube.switch.ch/videos/6x6qcL2s7Q; https://tube.switch.ch/videos/tFVfiakm1U,,,"* Get a DEM of a location of your choice (tip: make it not too big! And have it in projected coordinate/meter based)
 * Make a vector point layer with one position in the landscape
 * Make a viewpoint layer from it
 * Calculate a viewshed from it
