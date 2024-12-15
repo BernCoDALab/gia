@@ -61,9 +61,9 @@ You can download a [pdf of this presentation](gis_in_archaeology_11.pdf).
 # Before we start:
 
 You might need to download the following data, if you do not have them on your PC right now:
-* [SRTM DEM of Switzerland in EPSG 2056](https://github.com/BernCoDALab/gia/raw/main/lectures/11data/srtm_2056_cut.tif)
-* The [start point](https://github.com/BernCoDALab/gia/raw/main/lectures/11data/start.zip) as shapefile vector layer
-* The [end point](https://github.com/BernCoDALab/gia/raw/main/lectures/11data/end.zip) as shapefile vector layer
+* [SRTM DEM of Switzerland in EPSG 2056](https://github.com/BernCoDALab/gia/raw/main/lectures/11/data/srtm_2056_cut.tif)
+* The [start point](https://github.com/BernCoDALab/gia/raw/main/lectures/11/data/start.zip) as shapefile vector layer
+* The [end point](https://github.com/BernCoDALab/gia/raw/main/lectures/11/data/end.zip) as shapefile vector layer
 
 ---
 # A small repetition
